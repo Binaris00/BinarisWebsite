@@ -1,6 +1,6 @@
 # Electroblob's Wizardry Redux
 
-Electroblob's Wizardry is a mod focused on finding and using spells freely and having artifacts and different things that let you customize your weapons and tools in ways involving the essence of magic itself. Some of the original features:
+Electroblob's Wizardry is a mod focused on finding and using spells freely and having artifacts and different things that let you customize your weapons and tools in ways involving the essence of magic itself. Some original features:
 
 - 180+ spells, each with unique and special behaviors
 - 8 different magic elements (fire, ice, earth, and more!!)

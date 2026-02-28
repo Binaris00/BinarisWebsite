@@ -1,0 +1,1 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QElectroblob's Wizardry is a mod focused on finding and using spells freely and having artifacts and different things that let you customize your weapons and tools in ways involving the essence of magic itself.\\E$"}

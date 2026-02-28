@@ -5,3 +5,5 @@ src/pregen/script.js
 src/test/index.html
 src/test/script.js
 src/test/style.css
+.vscode/ltex.disabledRules.en-US.txt
+.gitignore
