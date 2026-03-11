@@ -1,3 +1,5 @@
+@import url('https://cdn.jsdelivr.net/npm/@catppuccin/palette/css/catppuccin.css');
+
 :root{
     --h1-size: 20.08px;
     --h1-weight: 700;
@@ -11,56 +13,63 @@
 }
 
 [data-color-theme='catppuccin-mocha'] {
-    /* Crust */
-    --canvas-background-0: #11111B;
-    /* Mantle */
-    --canvas-effect: #b1b1ff1b;
-    /* Surface 0 */
-    --container-background: #313244;
-    /* Overlay 0 */
-    --container-border-color: #6C7086;
-    /* Text */
-    --text-color: #CDD6F4;
+    --canvas-background-0: var(--ctp-mocha-crust);
+    --canvas-effect: var(--ctp-mocha-mantle);
+    --container-background: var(--ctp-mocha-surface0);
+    --container-border-color: var(--ctp-mocha-overlay0);
+    --text-color: var(--ctp-mocha-text);
+
+    --pink: var(--ctp-mocha-pink);
+    --red: var(--ctp-mocha-red);
+    --yellow: var(--ctp-mocha-yellow);
+    --green: var(--ctp-mocha-green);
+    --blue: var(--ctp-mocha-blue);
+    --purple: var(--ctp-mocha-lavender);
 }
 
-
 [data-color-theme='catppuccin-macchiato'] {
-    /* Crust */
-    --canvas-background-0: #181926; 
-    /* Mantle */
-    --canvas-effect: #1e2030;
-    /* Surface 0 */
-    --container-background: #363a4f;
-    /* Overlay 0 */
-    --container-border-color: #6e738d;
-    /* Text */
-    --text-color: #cad3f5;
+    --canvas-background-0: var(--ctp-macchiato-crust);
+    --canvas-effect: var(--ctp-macchiato-mantle);
+    --container-background: var(--ctp-macchiato-surface0);
+    --container-border-color: var(--ctp-macchiato-overlay0);
+    --text-color: var(--ctp-macchiato-text);
+
+    --pink: var(--ctp-macchiato-pink);
+    --red: var(--ctp-macchiato-red);
+    --yellow: var(--ctp-macchiato-yellow);
+    --green: var(--ctp-macchiato-green);
+    --blue: var(--ctp-macchiato-blue);
+    --purple: var(--ctp-macchiato-lavender);
 }
 
 [data-color-theme='catppuccin-frappe'] {
-    /* Crust */
-    --canvas-background-0: #232634; 
-    /* Mantle */
-    --canvas-effect: #292c3c;
-    /* Surface 0 */
-    --container-background: #414559;
-    /* Overlay 0 */
-    --container-border-color: #737994;
-    /* Text */
-    --text-color: #c6d0f5;
+    --canvas-background-0: var(--ctp-frappe-crust);
+    --canvas-effect: var(--ctp-frappe-mantle);
+    --container-background: var(--ctp-frappe-surface0);
+    --container-border-color: var(--ctp-frappe-overlay0);
+    --text-color: var(--ctp-frappe-text);
+
+    --pink: var(--ctp-frappe-pink);
+    --red: var(--ctp-frappe-red);
+    --yellow: var(--ctp-frappe-yellow);
+    --green: var(--ctp-frappe-green);
+    --blue: var(--ctp-frappe-blue);
+    --purple: var(--ctp-frappe-lavender);
 }
 
 [data-color-theme='catppuccin-latte'] {
-    /* Crust */
-    --canvas-background-0: #dce0e8; 
-    /* Mantle */
-    --canvas-effect: #e6e9ef88;
-    /* Surface 0 */
-    --container-background: #ccd0da;
-    /* Overlay 0 */
-    --container-border-color: #9ca0b0;
-    /* Text */
-    --text-color: #4c4f69;
+    --canvas-background-0: var(--ctp-latte-crust); 
+    --canvas-effect: var(--ctp-latte-mantle); 
+    --container-background: var(--ctp-latte-surface0);
+    --container-border-color: var(--ctp-latte-overlay0);
+    --text-color: var(--ctp-latte-text);
+
+    --pink: var(--ctp-latte-pink);
+    --red: var(--ctp-latte-red);
+    --yellow: var(--ctp-latte-yellow);
+    --green: var(--ctp-latte-green);
+    --blue: var(--ctp-latte-blue);
+    --purple: var(--ctp-latte-lavender);
 }
 
 * {
