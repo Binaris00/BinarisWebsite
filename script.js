@@ -12,25 +12,90 @@ let isPanning = false;
 let startX, startY;
 let canvasX = 0, canvasY = 0;
 
+const activeCards = new Set();
+
 // base card (atm just the test init card)
 createCard('start', 300, 300);
 createCard('electroblobs wizardry redux', 400, 300);
 
 /**
- * Create a draggable card that will be added in the 600 - 300 of the screen
- * @param {String} baseField 
- * @param {int} left
- * @param {int} top
+ * Parses markdown text and converts [[internal links]] into clickable anchors.
+ * Example: [[my page]] becomes <a class="internal-link" data-page="my page">my page</a>
+ * @param {String} text - raw markdown content
+ * @returns {String} - HTML string with internal links ready
  */
-async function createCard(baseField, left, top) {
+function parseMarkdown(text) {
+    // Replace [[page]] or [[page|display name]] with a markdown link using a special prefix
+    const withLinks = text.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, page, display) => {
+        const label = display || page; // use display name if provided, otherwise the page name
+        return `[${label}](internal:${encodeURIComponent(page)})`;
+    });
+
+    let html = marked.parse(withLinks);
+
+    // Replace the internal: href with a data attribute so we can intercept clicks
+    html = html.replace(
+        /href="internal:([^"]+)"/g,
+        'href="#" data-page="$1" class="internal-link"'
+    );
+
+    return html;
+}
+
+/**
+ * Create a draggable card that will be added in the given position
+ * @param {String} baseField - name of the .md file (without extension)
+ * @param {int} left - horizontal position in px
+ * @param {int} top - vertical position in px
+ * @param {Object|null} spawnedFrom - { left, top, width, height } of the parent card (optional)
+ */
+async function createCard(baseField, left, top, spawnedFrom = null) {
+    // Don't open the same card twice
+    if (activeCards.has(baseField)) return;
+    activeCards.add(baseField);
+
     const text = await fetch("/cards/" + baseField + ".md").then(r => r.text());
+
     var div = document.createElement('div');
     div.className = 'card';
-    div.innerHTML = marked.parse(text);
+    div.dataset.cardName = baseField;
+    div.innerHTML = parseMarkdown(text);
     div.style.left = left + 'px';
     div.style.top = top + 'px';
+
     canvas.appendChild(div);
     makeCardDraggable(div);
+    addInternalLinkListeners(div);
+}
+
+/**
+ * Add click listeners to all [[internal links]] inside a card.
+ * When clicked, a new card spawns to the right of the current one.
+ * @param {HTMLElement} card
+ */
+function addInternalLinkListeners(card) {
+    card.addEventListener('click', (e) => {
+        const link = e.target.closest('a.internal-link');
+        if (!link) return;
+        e.preventDefault();
+
+        const pageName = decodeURIComponent(link.dataset.page);
+
+        // Calculate spawn position: to the right of the current card
+        const currentLeft = parseInt(card.style.left || 0);
+        const currentTop  = parseInt(card.style.top  || 0);
+        const cardWidth   = card.offsetWidth;
+
+        const newLeft = currentLeft + cardWidth + 40;
+        const newTop  = currentTop  + Math.random() * 40 - 20;
+
+        createCard(pageName, newLeft, newTop, {
+            left: currentLeft,
+            top: currentTop,
+            width: cardWidth,
+            height: card.offsetHeight,
+        });
+    });
 }
 
 /**
@@ -42,6 +107,9 @@ function makeCardDraggable(card) {
     let cardStartX, cardStartY;
     
     card.addEventListener('mousedown', (e) => {
+        // Don't start drag when clicking a link
+        if (e.target.closest('a')) return;
+
         e.stopPropagation(); // Evita que active el pan del canvas
         isDragging = true;
         card.style.cursor = 'grabbing';

@@ -133,3 +133,17 @@ p {
     line-height: var(--body-line-height);
     letter-spacing: var(--body-letter-spacing);
 }
+
+/* Internal links inside cards ([[like this]]) */
+.card a.internal-link {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--container-border-color);
+    cursor: pointer;
+    transition: border-color 0.15s, opacity 0.15s;
+}
+
+.card a.internal-link:hover {
+    border-bottom-color: var(--text-color);
+    opacity: 0.75;
+}

@@ -1,4 +1,3 @@
-
 ### Biome Loot table
 
 Dev test for Eufonia Studio a while ago.
