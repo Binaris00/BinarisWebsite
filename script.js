@@ -16,7 +16,6 @@ const activeCards = new Set();
 
 // base card (atm just the test init card)
 createCard('start', 300, 300);
-createCard('electroblobs wizardry redux', 400, 300);
 
 /**
  * Parses markdown text and converts [[internal links]] into clickable anchors.
@@ -54,11 +53,12 @@ async function createCard(baseField, left, top, spawnedFrom = null) {
     if (activeCards.has(baseField)) return;
     activeCards.add(baseField);
 
-    const text = await fetch("/cards/" + baseField + ".md").then(r => r.text());
+    let text = await fetch("/cards/" + baseField + ".md").then(r => r.text());
 
     var div = document.createElement('div');
     div.className = 'card';
     div.dataset.cardName = baseField;
+    text = removeFrontmatter(text);
     div.innerHTML = parseMarkdown(text);
     div.style.left = left + 'px';
     div.style.top = top + 'px';
@@ -83,11 +83,11 @@ function addInternalLinkListeners(card) {
 
         // Calculate spawn position: to the right of the current card
         const currentLeft = parseInt(card.style.left || 0);
-        const currentTop  = parseInt(card.style.top  || 0);
-        const cardWidth   = card.offsetWidth;
+        const currentTop = parseInt(card.style.top || 0);
+        const cardWidth = card.offsetWidth;
 
         const newLeft = currentLeft + cardWidth + 40;
-        const newTop  = currentTop  + Math.random() * 40 - 20;
+        const newTop = currentTop + Math.random() * 40 - 20;
 
         createCard(pageName, newLeft, newTop, {
             left: currentLeft,
@@ -98,6 +98,34 @@ function addInternalLinkListeners(card) {
     });
 }
 
+// https://dev.to/codingnninja/how-to-extract-title-description-or-metadata-from-markdown-3nn8
+const extractFrontmatter = (markdown) => {
+    const charactersBetweenGroupedHyphens = /^---([\s\S]*?)---/;
+    const metadataMatched = markdown.match(charactersBetweenGroupedHyphens);
+    if (metadataMatched == null) {
+        return {};
+    }
+    const metadata = metadataMatched[1];
+
+    if (!metadata) {
+        return {};
+    }
+
+    const metadataLines = metadata.split("\n");
+    const metadataObject = metadataLines.reduce((accumulator, line) => {
+        const [key, ...value] = line.split(":").map((part) => part.trim());
+
+        if (key)
+            accumulator[key] = value[1] ? value.join(":") : value.join("");
+        return accumulator;
+    }, {});
+    return metadataObject;
+};
+
+function removeFrontmatter(texto) {
+  return texto.replace(/^---[\s\S]*?---\s*/, '');
+}
+
 /**
  * Add the needed event listeners to make the card draggable
  * @param {Card} card 
@@ -105,7 +133,7 @@ function addInternalLinkListeners(card) {
 function makeCardDraggable(card) {
     let isDragging = false;
     let cardStartX, cardStartY;
-    
+
     card.addEventListener('mousedown', (e) => {
         // Don't start drag when clicking a link
         if (e.target.closest('a')) return;
@@ -113,19 +141,19 @@ function makeCardDraggable(card) {
         e.stopPropagation(); // Evita que active el pan del canvas
         isDragging = true;
         card.style.cursor = 'grabbing';
-        
+
         cardStartX = e.clientX - parseInt(card.style.left || 0);
         cardStartY = e.clientY - parseInt(card.style.top || 0);
     });
-    
+
     document.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
-        
+
         e.preventDefault();
         card.style.left = (e.clientX - cardStartX) + 'px';
         card.style.top = (e.clientY - cardStartY) + 'px';
     });
-    
+
     document.addEventListener('mouseup', () => {
         if (isDragging) {
             isDragging = false;
@@ -134,10 +162,9 @@ function makeCardDraggable(card) {
     });
 }
 
-// Move all the canvas
 canvasBackground.addEventListener('mousedown', (e) => {
     if (e.target.closest('.card')) return;
-    
+
     isPanning = true;
     startX = e.clientX - canvasX;
     startY = e.clientY - canvasY;
@@ -146,11 +173,11 @@ canvasBackground.addEventListener('mousedown', (e) => {
 
 document.addEventListener('mousemove', (e) => {
     if (!isPanning) return;
-    
+
     canvasX = e.clientX - startX;
     canvasY = e.clientY - startY;
     canvas.style.transform = `translate(${canvasX}px, ${canvasY}px)`;
-    
+
     canvasBackground.style.backgroundPosition = `${canvasX % 30}px ${canvasY % 30}px`;
 });
 
