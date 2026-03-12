@@ -1,6 +1,6 @@
 ---
 title: Commission Board
-color: neutral
+color: red
 ---
 
 ## Commission Board
@@ -9,3 +9,4 @@ You can search about my commissions (All about Minecraft Java Mods at the moment
 
 - [[/commissions/biome_loot_table|Biome Loot Table]]
 - [[/commissions/cobblemon_legendary_spawn|Cobblemon Legendary Spawn]]
+- [[gifs/cat|Catius cat]]

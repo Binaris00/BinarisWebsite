@@ -18,6 +18,40 @@ const activeCards = new Set();
 createCard('start', 300, 300);
 
 /**
+ * Create a draggable card that will be added in the given position
+ * @param {String} baseField - name of the .md file (without extension)
+ * @param {int} left - horizontal position in px
+ * @param {int} top - vertical position in px
+ * @param {Object|null} spawnedFrom - { left, top, width, height } of the parent card (optional)
+ */
+async function createCard(baseField, left, top, spawnedFrom = null) {
+    if (activeCards.has(baseField)) return; // Don't open the same card twice
+    activeCards.add(baseField);
+
+    let text = await fetch("/cards/" + baseField + ".md").then(r => r.text());
+    let frontmatter = extractFrontmatter(text);
+    var div = document.createElement('div');
+    div.className = getCardType(frontmatter);
+    div.dataset.cardName = baseField;
+    text = removeFrontmatter(text);
+    div.innerHTML = parseMarkdown(text);
+    div.style.left = left + 'px';
+    div.style.top = top + 'px';
+
+    canvas.appendChild(div);
+    makeCardDraggable(div);
+    addInternalLinkListeners(div);
+}
+
+
+
+
+
+
+// --------------------------
+// Load markdown
+//--------------------------
+/**
  * Parses markdown text and converts [[internal links]] into clickable anchors.
  * Example: [[my page]] becomes <a class="internal-link" data-page="my page">my page</a>
  * @param {String} text - raw markdown content
@@ -26,7 +60,7 @@ createCard('start', 300, 300);
 function parseMarkdown(text) {
     // Replace [[page]] or [[page|display name]] with a markdown link using a special prefix
     const withLinks = text.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, page, display) => {
-        const label = display || page; // use display name if provided, otherwise the page name
+        const label = display || page; // use display name if provided
         return `[${label}](internal:${encodeURIComponent(page)})`;
     });
 
@@ -41,32 +75,81 @@ function parseMarkdown(text) {
     return html;
 }
 
+
+
+
+
+
+
+// --------------------------
+// Load frontmatter
+// --------------------------
+
+// https://dev.to/codingnninja/how-to-extract-title-description-or-metadata-from-markdown-3nn8
+const extractFrontmatter = (markdown) => {
+    const charactersBetweenGroupedHyphens = /^---([\s\S]*?)---/;
+    const metadataMatched = markdown.match(charactersBetweenGroupedHyphens);
+    if (metadataMatched == null) {
+        return {};
+    }
+    const metadata = metadataMatched[1];
+
+    if (!metadata) {
+        return {};
+    }
+
+    const metadataLines = metadata.split("\n");
+    const metadataObject = metadataLines.reduce((accumulator, line) => {
+        const [key, ...value] = line.split(":").map((part) => part.trim());
+
+        if (key)
+            accumulator[key] = value[1] ? value.join(":") : value.join("");
+        return accumulator;
+    }, {});
+    return metadataObject;
+};
+
 /**
- * Create a draggable card that will be added in the given position
- * @param {String} baseField - name of the .md file (without extension)
- * @param {int} left - horizontal position in px
- * @param {int} top - vertical position in px
- * @param {Object|null} spawnedFrom - { left, top, width, height } of the parent card (optional)
+ * Removes the frontmatter part from the document. Wao
+ * @param {String} text 
+ * @returns card text without frontmatter
  */
-async function createCard(baseField, left, top, spawnedFrom = null) {
-    // Don't open the same card twice
-    if (activeCards.has(baseField)) return;
-    activeCards.add(baseField);
-
-    let text = await fetch("/cards/" + baseField + ".md").then(r => r.text());
-
-    var div = document.createElement('div');
-    div.className = 'card';
-    div.dataset.cardName = baseField;
-    text = removeFrontmatter(text);
-    div.innerHTML = parseMarkdown(text);
-    div.style.left = left + 'px';
-    div.style.top = top + 'px';
-
-    canvas.appendChild(div);
-    makeCardDraggable(div);
-    addInternalLinkListeners(div);
+function removeFrontmatter(text) {
+    return text.replace(/^---[\s\S]*?---\s*/, '');
 }
+
+function getCardType(frontmatter) {
+    console.log(frontmatter);
+
+    if (!frontmatter) {
+        return 'card'
+    }
+
+    if (Object.keys(frontmatter).length === 0) {
+        return 'card'
+    }
+
+    if (!('type' in frontmatter)) {
+        return 'card' // default
+    }
+
+    const value = frontmatter.type;
+    if (value == 'gif') {
+        console.log('congratulations, you found a gif, sadly, this isnt supported at the moment')
+        return 'card'
+    }
+    return value;
+}
+
+
+
+
+
+
+
+// --------------------------
+// Event listeners
+// --------------------------
 
 /**
  * Add click listeners to all [[internal links]] inside a card.
@@ -96,34 +179,6 @@ function addInternalLinkListeners(card) {
             height: card.offsetHeight,
         });
     });
-}
-
-// https://dev.to/codingnninja/how-to-extract-title-description-or-metadata-from-markdown-3nn8
-const extractFrontmatter = (markdown) => {
-    const charactersBetweenGroupedHyphens = /^---([\s\S]*?)---/;
-    const metadataMatched = markdown.match(charactersBetweenGroupedHyphens);
-    if (metadataMatched == null) {
-        return {};
-    }
-    const metadata = metadataMatched[1];
-
-    if (!metadata) {
-        return {};
-    }
-
-    const metadataLines = metadata.split("\n");
-    const metadataObject = metadataLines.reduce((accumulator, line) => {
-        const [key, ...value] = line.split(":").map((part) => part.trim());
-
-        if (key)
-            accumulator[key] = value[1] ? value.join(":") : value.join("");
-        return accumulator;
-    }, {});
-    return metadataObject;
-};
-
-function removeFrontmatter(texto) {
-  return texto.replace(/^---[\s\S]*?---\s*/, '');
 }
 
 /**
