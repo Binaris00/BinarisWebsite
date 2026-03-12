@@ -31,7 +31,7 @@ async function createCard(baseField, left, top, spawnedFrom = null) {
     let text = await fetch("/cards/" + baseField + ".md").then(r => r.text());
     let frontmatter = extractFrontmatter(text);
     var div = document.createElement('div');
-    div.className = getCardType(frontmatter);
+    div.className = getCardType(frontmatter) + setExtraClasses(frontmatter);
     div.dataset.cardName = baseField;
     text = removeFrontmatter(text);
     div.innerHTML = parseMarkdown(text);
@@ -119,18 +119,8 @@ function removeFrontmatter(text) {
 }
 
 function getCardType(frontmatter) {
-    console.log(frontmatter);
-
-    if (!frontmatter) {
+    if (!isValidFrontmatter(frontmatter, 'type')) {
         return 'card'
-    }
-
-    if (Object.keys(frontmatter).length === 0) {
-        return 'card'
-    }
-
-    if (!('type' in frontmatter)) {
-        return 'card' // default
     }
 
     const value = frontmatter.type;
@@ -139,6 +129,37 @@ function getCardType(frontmatter) {
         return 'card'
     }
     return value;
+}
+
+function setExtraClasses(frontmatter) {
+    let extras = ''
+    extras += setBorderColor(frontmatter);
+    return extras;
+}
+
+function setBorderColor(frontmatter) {
+    if (!isValidFrontmatter(frontmatter, 'border-color')) {
+        return ''
+    }
+
+    return ' card-border-' + frontmatter['border-color'];
+
+}
+
+function isValidFrontmatter(frontmatter, key) {
+    if (!frontmatter) {
+        return false;
+    }
+
+    if (Object.keys(frontmatter).length === 0) {
+        return false;
+    }
+
+    if (!(key in frontmatter)) {
+        return false;
+    }
+    
+    return true;
 }
 
 

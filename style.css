@@ -120,6 +120,30 @@ Cuadricula effect
     cursor: grabbing;
 }
 
+.card-border-red {
+    border: 3px solid color-mix(in srgb, var(--red) 40%, transparent);
+}
+
+.card-border-blue {
+    border: 3px solid color-mix(in srgb, var(--blue) 40%, transparent);
+}
+
+.card-border-yellow {
+    border: 3px solid color-mix(in srgb, var(--yellow) 40%, transparent);
+}
+
+.card-border-green {
+    border: 3px solid color-mix(in srgb, var(--green) 40%, transparent);
+}
+
+.card-border-pink {
+    border: 3px solid color-mix(in srgb, var(--pink) 40%, transparent);
+}
+
+.card-border-purple {
+    border: 3px solid color-mix(in srgb, var(--purple) 40%, transparent);
+}
+
 
 
 /*
