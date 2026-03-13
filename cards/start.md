@@ -1,7 +1,6 @@
 ---
 border-color: green
 ---
-
 # Binaris Board
 
 Hey. Hello. Heya. Heyo. Hola. Hi. Hallo.
@@ -14,8 +13,16 @@ As you can see, this website is using a 'Canvas style' where you can move, delet
 
 First Checking these internal links to know more about my work:
 
-[[commission_board]]
+[[commission_board|Commission board]]
+
+Check this if you want to know more about the internal parts of this page:
+
+[[markdown_test|Markdown test]]
 
 > (Expect broken visuals and missing features, pls have patience with me because I have the mind of a potato)
 
 > You can also come back in just a few days to see more content...
+
+Check software/things that I recommend for general stuff:
+
+[[recommendations_panel|Recommendation Panel]]
