@@ -11,11 +11,20 @@ const canvasBackground = document.getElementById('canvas-background-effect');
 let isPanning = false;
 let startX, startY;
 let canvasX = 0, canvasY = 0;
+let center1 = Math.round(canvas.getBoundingClientRect().left + document.documentElement.scrollLeft + canvas.clientWidth / 2);
+let center2 = Math.round(canvas.getBoundingClientRect().top + document.documentElement.scrollTop + canvas.clientHeight / 2);
+
+center1 = Math.round(center1);
+center2 = Math.round(center2);
 
 const activeCards = new Set();
 
 // base card (atm just the test init card)
-createCard('start', 300, 300);
+createCard('start', 500, 120);
+
+createCard('presentation', center1, center2);
+
+createCard('gifs/cat', 421, 234)
 
 /**
  * Create a draggable card that will be added in the given position
@@ -37,6 +46,9 @@ async function createCard(baseField, left, top, spawnedFrom = null) {
     div.innerHTML = parseMarkdown(text);
     div.style.left = left + 'px';
     div.style.top = top + 'px';
+    if (left === center1 && top === center2) {
+        div.style.transform = "translate(-50%, -50%)";
+    }
 
     canvas.appendChild(div);
     makeCardDraggable(div);
@@ -125,8 +137,7 @@ function getCardType(frontmatter) {
 
     const value = frontmatter.type;
     if (value == 'gif') {
-        console.log('congratulations, you found a gif, sadly, this isnt supported at the moment')
-        return 'card'
+        return 'gif-card'
     }
     return value;
 }

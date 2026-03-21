@@ -1,6 +1,7 @@
 ---
 border-color: green
 ---
+
 # Binaris Board
 
 Hey. Hello. Heya. Heyo. Hola. Hi. Hallo.

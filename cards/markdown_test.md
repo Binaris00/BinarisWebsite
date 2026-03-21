@@ -1,7 +1,6 @@
 ---
 border-color: pink
 ---
-
 # Markdown testing
 
 If you spend too much time in the internet + know 1-2 things about tech you probably recognize that this site is probably a fancy Markdown parser, and you would be correct!!
@@ -71,7 +70,7 @@ You may be using [Markdown Live Preview](https://markdownlivepreview.com/).
 
 ## Blocks of code
 
-```
+```javascript
 let message = 'Hello world';
 alert(message);
 ```

@@ -140,7 +140,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
@@ -181,6 +180,19 @@ Cuadricula effect
     user-select: none;
 }
 
+.gif-card {
+    border-radius: 6px;
+    border: 3px solid var(--container-border-color);
+    position: absolute;
+    cursor: grab;
+    user-select: none;
+}
+
+/* without this we have a little, very little space in the bottom of the img!! :,D */
+.gif-card p img {
+  display: block;
+}
+
 .card:active {
     cursor: grabbing;
 }
@@ -215,7 +227,7 @@ Cuadricula effect
 Text formats
 */
 
-h1 {
+.card h1 {
     color: var(--text-color);
     font-size: var(--h1-size);
     font-weight: var(--h1-weight);
@@ -224,7 +236,7 @@ h1 {
     margin: 2px 0px 3px 0px;
 }
 
-h2 {
+.card h2 {
     color: var(--text-color);
     font-size: var(--h2-size);
     font-weight: var(--h2-weight);
@@ -233,7 +245,7 @@ h2 {
     margin: 2px 0px 3px 0px;
 }
 
-h3 {
+.card h3 {
     color: var(--text-color);
     font-size: var(--h3-size);
     font-weight: var(--h3-weight);
@@ -242,7 +254,7 @@ h3 {
     margin: 2px 0px 3px 0px;
 }
 
-h4 {
+.card h4 {
     color: var(--text-color);
     font-size: var(--h4-size);
     font-weight: var(--h4-weight);
@@ -251,7 +263,7 @@ h4 {
     margin: 2px 0px 3px 0px;
 }
 
-h5 {
+.card h5 {
     color: var(--text-color);
     font-size: var(--h5-size);
     font-weight: var(--h5-weight);
@@ -260,7 +272,7 @@ h5 {
     margin: 2px 0px 3px 0px;
 }
 
-h6 {
+.card h6 {
     color: var(--text-color);
     font-size: var(--h6-size);
     font-weight: var(--h6-weight);
@@ -269,7 +281,7 @@ h6 {
     margin: 2px 0px 3px 0px;
 }
 
-p {
+.card p {
     color: var(--text-color);
     font-size: var(--body-size);
     font-weight: var(--body-weight);
@@ -279,7 +291,7 @@ p {
     overflow-wrap: break-word;
 }
 
-ul {
+.card ul {
     color: var(--text-color);
     font-size: var(--body-size);
     line-height: var(--body-line-height);
@@ -289,7 +301,7 @@ ul {
     list-style-position: inside;
 }
 
-ol {
+.card ol {
     color: var(--text-color);
     font-size: var(--body-size);
     line-height: var(--body-line-height);
@@ -299,24 +311,24 @@ ol {
     list-style-position: inside;
 }
 
-table {
+.card table {
     table-layout: auto;
     border-collapse: collapse;
 
     border: px solid var(--text-color);
 }
 
-th,
-td {
+.card th,
+.card td {
   padding: 0.6em;
 }
 
-tr {
+.card tr {
     border: 2px solid var(--text-color);
 }
 
 /* Zebra striping */
-tbody tr:nth-child(odd) {
+.card tbody tr:nth-child(odd) {
   background-color: color-mix(in srgb, var(--blue) 3%, transparent);
 }
 
@@ -332,4 +344,9 @@ tbody tr:nth-child(odd) {
 .card a.internal-link:hover {
     border-bottom-color: var(--text-color);
     opacity: 0.75;
+}
+
+img,
+video {
+  pointer-events: none;
 }
