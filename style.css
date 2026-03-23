@@ -199,29 +199,41 @@ Cuadricula effect
 
 .card-border-red {
     border: 3px solid color-mix(in srgb, var(--red) 40%, transparent);
+    transition: border 1s;
 }
 
 .card-border-blue {
     border: 3px solid color-mix(in srgb, var(--blue) 40%, transparent);
+    transition: border 1s;
 }
 
 .card-border-yellow {
     border: 3px solid color-mix(in srgb, var(--yellow) 40%, transparent);
+    transition: border 1s;
 }
 
 .card-border-green {
     border: 3px solid color-mix(in srgb, var(--green) 40%, transparent);
+    transition: border 1s;
 }
 
 .card-border-pink {
     border: 3px solid color-mix(in srgb, var(--pink) 40%, transparent);
+    transition: border 1s;
 }
 
 .card-border-purple {
     border: 3px solid color-mix(in srgb, var(--purple) 40%, transparent);
+    transition: border 1s;
 }
 
+.card-border-red:hover, .card-border-red:focus, .card-border-red:active {
+    border-color: color-mix(in srgb, var(--red) 40%, transparent);
+}
 
+.card-border-green:hover, .card-border-green:focus, .card-border-green:active {
+    border-color: color-mix(in srgb, var(--green) 90%, transparent);
+}
 
 /*
 Text formats
