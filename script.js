@@ -5,14 +5,16 @@
 // =======================================================================================
 
 // Base vars
-cards = []
 const canvas = document.getElementById('canvas');
 const canvasBackground = document.getElementById('canvas-background-effect');
+const buttonDelete = document.getElementById('button-delete-mode');
 let isPanning = false;
 let startX, startY;
 let canvasX = 0, canvasY = 0;
 let center1 = Math.round(canvas.getBoundingClientRect().left + document.documentElement.scrollLeft + canvas.clientWidth / 2);
 let center2 = Math.round(canvas.getBoundingClientRect().top + document.documentElement.scrollTop + canvas.clientHeight / 2);
+
+let deleteMode = false;
 
 center1 = Math.round(center1);
 center2 = Math.round(center2);
@@ -236,6 +238,7 @@ function makeCardDraggable(card) {
     document.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
 
+        if (deleteMode) card.remove();
         e.preventDefault();
         card.style.left = (e.clientX - cardStartX) + 'px';
         card.style.top = (e.clientY - cardStartY) + 'px';
@@ -245,6 +248,7 @@ function makeCardDraggable(card) {
         if (isDragging) {
             isDragging = false;
             card.style.cursor = 'grab';
+            if (deleteMode) card.remove();
         }
     });
 }
@@ -272,3 +276,15 @@ document.addEventListener('mouseup', () => {
     isPanning = false;
     canvasBackground.style.cursor = 'grab';
 });
+
+function deletdeToggle() {
+    if (deleteMode) {
+        buttonDelete.innerHTML = 'Delete Mode';
+    } else {
+        buttonDelete.innerHTML = 'Normal Mode'
+    }
+
+    deleteMode = !deleteMode;
+}
+
+buttonDelete.addEventListener('click', deletdeToggle);

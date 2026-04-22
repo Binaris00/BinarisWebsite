@@ -199,32 +199,32 @@ Cuadricula effect
 
 .card-border-red {
     border: 3px solid color-mix(in srgb, var(--red) 40%, transparent);
-    transition: border 1s;
+    transition: border 500ms;
 }
 
 .card-border-blue {
     border: 3px solid color-mix(in srgb, var(--blue) 40%, transparent);
-    transition: border 1s;
+    transition: border 500ms;
 }
 
 .card-border-yellow {
     border: 3px solid color-mix(in srgb, var(--yellow) 40%, transparent);
-    transition: border 1s;
+    transition: border 500ms;
 }
 
 .card-border-green {
     border: 3px solid color-mix(in srgb, var(--green) 40%, transparent);
-    transition: border 1s;
+    transition: border 500ms;
 }
 
 .card-border-pink {
     border: 3px solid color-mix(in srgb, var(--pink) 40%, transparent);
-    transition: border 1s;
+    transition: border 500ms;
 }
 
 .card-border-purple {
     border: 3px solid color-mix(in srgb, var(--purple) 40%, transparent);
-    transition: border 1s;
+    transition: border 500ms;
 }
 
 .card-border-red:hover, .card-border-red:focus, .card-border-red:active {
@@ -361,4 +361,33 @@ Text formats
 img,
 video {
   pointer-events: none;
+}
+
+.toolbar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: var(--container-background);
+    padding: 12px;
+    border: 2px solid var(--container-border-color);
+    box-shadow: 0 4px 4px var(--container-background);
+    display: flex;
+    gap: 8px;
+    z-index: 1000;
+}
+
+.toolbar button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.toolbar button:hover {
+    background: #0056b3;
 }
