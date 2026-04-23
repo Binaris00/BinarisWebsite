@@ -1,11 +1,7 @@
 import { marked } from 'marked';
 import { Frontmatter } from './types';
-import { activeCards } from './main';
+import { activeCards, getCard, isInActiveCards } from './main';
 
-
-// --------------------------
-// Markdown
-// --------------------------
 /**
  * Parses markdown text and converts [[internal links]] into clickable anchors.
  * Example: [[my page]] becomes <a class="internal-link" data-page="my page">my page</a>
@@ -27,9 +23,8 @@ export function parseMarkdown(text: string): string {
     )
 
     return html
-}// --------------------------
-// Frontmatter
-// --------------------------
+}
+
 export function extractFrontmatter(markdown: string): Frontmatter {
     const match = markdown.match(/^---([\s\S]*?)---/)
     if (!match?.[1]) return {}
@@ -42,9 +37,11 @@ export function extractFrontmatter(markdown: string): Frontmatter {
             return acc
         }, {})
 }
+
 export function removeFrontmatter(text: string): string {
     return text.replace(/^---[\s\S]*?---\s*/, '')
 }
+
 export function isValidFrontmatter(frontmatter: Frontmatter, key: string): boolean {
     return (
         !!frontmatter &&
@@ -52,20 +49,28 @@ export function isValidFrontmatter(frontmatter: Frontmatter, key: string): boole
         key in frontmatter
     )
 }
+
 export function getCardType(frontmatter: Frontmatter): string {
     if (!isValidFrontmatter(frontmatter, 'type')) return 'card'
     return frontmatter.type === 'gif' ? 'gif-card' : frontmatter.type
 }
+
 export function setExtraClasses(frontmatter: Frontmatter): string {
     return setBorderColor(frontmatter)
 }
+
 export function setBorderColor(frontmatter: Frontmatter): string {
     if (!isValidFrontmatter(frontmatter, 'border-color')) return ''
     return ' card-border-' + frontmatter['border-color']
 }
+
 export function removeCard(card: HTMLElement): void {
-    const cardName = card.dataset.cardName
-    if (cardName) activeCards.delete(cardName)
+    const name = card.dataset.cardName
+    if (name && isInActiveCards(name)) {
+        let card = getCard(name)
+        if (card != null) {
+            activeCards.delete(card)
+        }
+    }
     card.remove()
 }
-

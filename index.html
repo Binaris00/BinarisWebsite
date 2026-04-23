@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" data-color-theme="neobrutalism">
-  <head>
-    <link rel="stylesheet" href="/src/style.scss">
-    <script type="module" src="/src/main.ts"></script>
-  </head>
-  <body>
+
+<head>
+  <link rel="stylesheet" href="/src/style.scss">
+  <script type="module" src="/src/main.ts"></script>
+</head>
+
+<body>
+  <div id="canvas-background-effect">
     <div class="toolbar">
       <button id="button-delete-mode">Delete Mode</button>
+      <button id="button-themes">Themes</button>
     </div>
-    <div id="canvas-background-effect">
-      <div id="canvas"></div>
+    <div class="dropdown">
+      <div id="themes-content"></div>
     </div>
-  </body>
+    <div id="canvas"></div>
+  </div>
+</body>
+
 </html>

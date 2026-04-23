@@ -1,13 +1,17 @@
-import { SpawnedFrom } from './types'
+import { Card, SpawnedFrom } from './types'
 import { extractFrontmatter, getCardType, parseMarkdown, removeFrontmatter, setExtraClasses } from './makdown_utils'
 import { addCanvasEventsListeners, addInternalLinkListeners, makeCardDraggable } from './event_listeners'
 import moment from 'moment'
+import { safetlyCheckPreset } from './preset_utils'
+import { initButtonTheme, setThemeButtonName, toggleDeleteMode, toggleDropdown } from './button_utils'
 
 // DOM
 
 export const canvas = document.getElementById('canvas') as HTMLElement
 export const canvasBackground = document.getElementById('canvas-background-effect') as HTMLElement
-const buttonDelete = document.getElementById('button-delete-mode') as HTMLButtonElement
+export const buttonDelete = document.getElementById('button-delete-mode') as HTMLButtonElement
+export const buttonTheme = document.getElementById('button-themes') as HTMLButtonElement
+export const buttonThemeContent = document.getElementById('themes-content') as HTMLElement;
 
 // State
 
@@ -18,28 +22,29 @@ export let canvasX = 0
 export let canvasY = 0
 export let deleteMode = false
 
-export const activeCards = new Set<string>()
+export const activeCards = new Set<Card>()
 
 // Init
 
-const centerX = Math.round(
-  canvas.getBoundingClientRect().left +
-  document.documentElement.scrollLeft +
-  canvas.clientWidth / 2
-)
-const centerY = Math.round(
-  canvas.getBoundingClientRect().top +
-  document.documentElement.scrollTop +
-  canvas.clientHeight / 2
-)
+export const centerX = Math.round(canvas.getBoundingClientRect().left + document.documentElement.scrollLeft + canvas.clientWidth / 2)
+export const centerY = Math.round(canvas.getBoundingClientRect().top + document.documentElement.scrollTop + canvas.clientHeight / 2)
+export const validPresets = [ "general", "work" ]
 
-createCard('start', 500, 120)
-createCard('presentation', centerX, centerY)
-createCard('gifs/cat', 421, 234)
+export const validThemes = {
+  "neobrutalism": "Neobrutalism",
+  "onedark": "OneDark"
+}
+
+const preset = window.location.pathname.replace('/', '')
+safetlyCheckPreset(preset);
 
 document.title = 'new Binaris(' + moment().format('DcMtYYYY') + ')';
 
+setThemeButtonName(document.documentElement.getAttribute('data-color-theme'))
+
 addCanvasEventsListeners()
+
+initButtonTheme()
 
 /**
  * Create a draggable card that will be added in the given position
@@ -48,14 +53,8 @@ addCanvasEventsListeners()
  * @param top - vertical position in px
  * @param spawnedFrom - position/size of the parent card (optional)
  */
-export async function createCard(
-  baseField: string,
-  left: number,
-  top: number,
-  spawnedFrom: SpawnedFrom | null = null
-): Promise<void> {
-  if (activeCards.has(baseField)) return
-  activeCards.add(baseField)
+export async function createCard(baseField: string, left: number, top: number, spawnedFrom: SpawnedFrom | null = null): Promise<void> {
+  if (isInActiveCards(baseField)) return
 
   let text = await fetch('/cards/' + baseField + '.md').then(r => r.text())
   const frontmatter = extractFrontmatter(text)
@@ -72,14 +71,10 @@ export async function createCard(
     div.style.transform = 'translate(-50%, -50%)'
   }
 
+  activeCards.add(new Card(baseField, left, top, text, frontmatter))
   canvas.appendChild(div)
   makeCardDraggable(div)
   addInternalLinkListeners(div)
-}
-
-function toggleDeleteMode(): void {
-  deleteMode = !deleteMode
-  buttonDelete.innerHTML = deleteMode ? 'Normal Mode' : 'Delete Mode'
 }
 
 export function setCanvasX(x: number) {
@@ -102,4 +97,25 @@ export function setPanning(val: boolean) {
   isPanning = val
 }
 
+export function setDeleteMode(val: boolean) {
+  deleteMode = val
+}
+
+export function isInActiveCards(val: string): boolean {
+  for (var card of activeCards) {
+    if (card.id === val) return true;
+  }
+
+  return false;
+}
+
+export function getCard(val: string): Card | null {
+  for (var card of activeCards) {
+    if (card.id === val) return card;
+  }
+
+  return null;
+}
+
 buttonDelete.addEventListener('click', toggleDeleteMode)
+buttonTheme.addEventListener('click', toggleDropdown)

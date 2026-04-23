@@ -1,11 +1,3 @@
-export interface Card {
-  id: string
-  left: number
-  top: number
-  content: string
-  frontmatter: Record<string, string>
-}
-
 export interface SpawnedFrom {
   left: number
   top: number
@@ -29,4 +21,14 @@ export class Card {
     this.content = content
     this.frontmatter = frontmatter
   }
+}
+
+export interface CardEntry {
+  coords: [number, number]
+  center: boolean
+}
+
+export interface Preset {
+  cards: Record<string, CardEntry>
+  theme: string
 }
