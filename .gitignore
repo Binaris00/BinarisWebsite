@@ -7,3 +7,4 @@ src/test/script.js
 src/test/style.css
 .vscode/ltex.disabledRules.en-US.txt
 .gitignore
+assets/

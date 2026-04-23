@@ -1,0 +1,349 @@
+@import url('https://cdn.jsdelivr.net/npm/@catppuccin/palette/css/catppuccin.css');
+
+// =======================================================================================
+// Type Scale
+// =======================================================================================
+
+:root {
+  --display-lg-size: 18.79px;
+  --display-lg-weight: 800;
+  --display-lg-line-height: 1.6;
+  --display-lg-letter-spacing: 0.03em;
+
+  --display-md-size: 18.19px;
+  --display-md-weight: 800;
+  --display-md-line-height: 1.6;
+  --display-md-letter-spacing: 0.03em;
+
+  --h1-size: 17.61px;
+  --h1-weight: 700;
+  --h1-line-height: 1.6;
+  --h1-letter-spacing: 0.03em;
+
+  --h2-size: 16.51px;
+  --h2-weight: 600;
+  --h2-line-height: 1.6;
+  --h2-letter-spacing: 0.03em;
+
+  --h3-size: 15.98px;
+  --h3-weight: 600;
+  --h3-line-height: 1.65;
+  --h3-letter-spacing: 0.03em;
+
+  --h4-size: 15.47px;
+  --h4-weight: 500;
+  --h4-line-height: 1.65;
+  --h4-letter-spacing: 0.03em;
+
+  --h5-size: 15.22px;
+  --h5-weight: 500;
+  --h5-line-height: 1.65;
+  --h5-letter-spacing: 0.03em;
+
+  --h6-size: 14.98px;
+  --h6-weight: 500;
+  --h6-line-height: 1.65;
+  --h6-letter-spacing: 0.03em;
+
+  --body-xl-size: 14.74px;
+  --body-xl-weight: 400;
+  --body-xl-line-height: 1.65;
+  --body-xl-letter-spacing: 0.03em;
+
+  --body-size: 14.5px;
+  --body-weight: 400;
+  --body-line-height: 1.65;
+  --body-letter-spacing: 0.03em;
+
+  --body-sm-size: 14.27px;
+  --body-sm-weight: 400;
+  --body-sm-line-height: 1.65;
+  --body-sm-letter-spacing: 0.03em;
+
+  --caption-lg-size: 14.04px;
+  --caption-lg-weight: 400;
+  --caption-lg-line-height: 1.65;
+  --caption-lg-letter-spacing: 0.03em;
+
+  --caption-size: 13.81px;
+  --caption-weight: 400;
+  --caption-line-height: 1.65;
+  --caption-letter-spacing: 0.03em;
+
+  --caption-sm-size: 13.59px;
+  --caption-sm-weight: 300;
+  --caption-sm-line-height: 1.65;
+  --caption-sm-letter-spacing: 0.03em;
+
+  --overline-size: 13.37px;
+  --overline-weight: 500;
+}
+
+// =======================================================================================
+// Themes
+// =======================================================================================
+
+[data-color-theme='catppuccin-mocha'] {
+  --canvas-background-0:    var(--ctp-mocha-crust);
+  --canvas-effect:          var(--ctp-mocha-mantle);
+  --container-background:   var(--ctp-mocha-surface0);
+  --container-border-color: var(--ctp-mocha-overlay0);
+  --text-color:             var(--ctp-mocha-text);
+
+  --pink:   var(--ctp-mocha-pink);
+  --red:    var(--ctp-mocha-red);
+  --yellow: var(--ctp-mocha-yellow);
+  --green:  var(--ctp-mocha-green);
+  --blue:   var(--ctp-mocha-blue);
+  --purple: var(--ctp-mocha-lavender);
+}
+
+[data-color-theme='catppuccin-macchiato'] {
+  --canvas-background-0:    var(--ctp-macchiato-crust);
+  --canvas-effect:          var(--ctp-macchiato-mantle);
+  --container-background:   var(--ctp-macchiato-surface0);
+  --container-border-color: var(--ctp-macchiato-overlay0);
+  --text-color:             var(--ctp-macchiato-text);
+
+  --pink:   var(--ctp-macchiato-pink);
+  --red:    var(--ctp-macchiato-red);
+  --yellow: var(--ctp-macchiato-yellow);
+  --green:  var(--ctp-macchiato-green);
+  --blue:   var(--ctp-macchiato-blue);
+  --purple: var(--ctp-macchiato-lavender);
+}
+
+[data-color-theme='catppuccin-frappe'] {
+  --canvas-background-0:    var(--ctp-frappe-crust);
+  --canvas-effect:          var(--ctp-frappe-mantle);
+  --container-background:   var(--ctp-frappe-surface0);
+  --container-border-color: var(--ctp-frappe-overlay0);
+  --text-color:             var(--ctp-frappe-text);
+
+  --pink:   var(--ctp-frappe-pink);
+  --red:    var(--ctp-frappe-red);
+  --yellow: var(--ctp-frappe-yellow);
+  --green:  var(--ctp-frappe-green);
+  --blue:   var(--ctp-frappe-blue);
+  --purple: var(--ctp-frappe-lavender);
+}
+
+[data-color-theme='catppuccin-latte'] {
+  --canvas-background-0:    var(--ctp-latte-crust);
+  --canvas-effect:          var(--ctp-latte-mantle);
+  --container-background:   var(--ctp-latte-surface0);
+  --container-border-color: var(--ctp-latte-overlay0);
+  --text-color:             var(--ctp-latte-text);
+
+  --pink:   var(--ctp-latte-pink);
+  --red:    var(--ctp-latte-red);
+  --yellow: var(--ctp-latte-yellow);
+  --green:  var(--ctp-latte-green);
+  --blue:   var(--ctp-latte-blue);
+  --purple: var(--ctp-latte-lavender);
+}
+
+// =======================================================================================
+// Base
+// =======================================================================================
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  overflow: hidden;
+  background: var(--canvas-background-0);
+}
+
+// =======================================================================================
+// Canvas
+// =======================================================================================
+
+#canvas-background-effect {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  cursor: grab;
+  background:
+    linear-gradient(0deg, var(--canvas-effect) 1px, transparent 1px),
+    linear-gradient(90deg, var(--canvas-effect) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+#canvas {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+// =======================================================================================
+// Cards
+// =======================================================================================
+
+%card-base {
+  border-radius: 6px;
+  border: 3px solid var(--container-border-color);
+  position: absolute;
+  cursor: grab;
+  user-select: none;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.card {
+  @extend %card-base;
+  padding: 10px;
+  background-color: var(--container-background);
+  width: 600px;
+}
+
+.gif-card {
+  @extend %card-base;
+
+  // without this there's a tiny gap below the gif
+  p img {
+    display: block;
+  }
+}
+
+// Card border colors
+$border-colors: (
+  'red':    --red,
+  'blue':   --blue,
+  'yellow': --yellow,
+  'green':  --green,
+  'pink':   --pink,
+  'purple': --purple,
+);
+
+@each $name, $var in $border-colors {
+  .card-border-#{$name} {
+    border: 3px solid color-mix(in srgb, var(#{$var}) 40%, transparent);
+    transition: border 500ms;
+  }
+}
+
+.card-border-red:hover,
+.card-border-red:focus,
+.card-border-red:active {
+  border-color: color-mix(in srgb, var(--red) 40%, transparent);
+}
+
+.card-border-green:hover,
+.card-border-green:focus,
+.card-border-green:active {
+  border-color: color-mix(in srgb, var(--green) 90%, transparent);
+}
+
+// =======================================================================================
+// Card typography
+// =======================================================================================
+
+@mixin card-text($size-var, $weight-var, $lh-var, $ls-var, $margin: '2px 0px 3px 0px') {
+  color: var(--text-color);
+  font-size: var(#{$size-var});
+  font-weight: var(#{$weight-var});
+  line-height: var(#{$lh-var});
+  letter-spacing: var(#{$ls-var});
+  margin: #{$margin};
+}
+
+.card {
+  h1 { @include card-text('--h1-size', '--h1-weight', '--h1-line-height', '--h1-letter-spacing'); }
+  h2 { @include card-text('--h2-size', '--h2-weight', '--h2-line-height', '--h2-letter-spacing'); }
+  h3 { @include card-text('--h3-size', '--h3-weight', '--h3-line-height', '--h3-letter-spacing'); }
+  h4 { @include card-text('--h4-size', '--h4-weight', '--h4-line-height', '--h4-letter-spacing'); }
+  h5 { @include card-text('--h5-size', '--h5-weight', '--h5-line-height', '--h5-letter-spacing'); }
+  h6 { @include card-text('--h6-size', '--h6-weight', '--h6-line-height', '--h6-letter-spacing'); }
+
+  p {
+    @include card-text('--body-size', '--body-weight', '--body-line-height', '--body-letter-spacing', '15px 0px 15px 0px');
+    overflow-wrap: break-word;
+  }
+
+  ul,
+  ol {
+    @include card-text('--body-size', '--body-weight', '--body-line-height', '--body-letter-spacing', '8px 0px 8px 0px');
+    list-style-position: inside;
+  }
+
+  table {
+    table-layout: auto;
+    border-collapse: collapse;
+    border: 1px solid var(--text-color);
+  }
+
+  th,
+  td {
+    padding: 0.6em;
+  }
+
+  tr {
+    border: 2px solid var(--text-color);
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: color-mix(in srgb, var(--blue) 3%, transparent);
+  }
+
+  a.internal-link {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--container-border-color);
+    cursor: pointer;
+    transition: border-color 0.15s, opacity 0.15s;
+
+    &:hover {
+      border-bottom-color: var(--text-color);
+      opacity: 0.75;
+    }
+  }
+}
+
+// =======================================================================================
+// Media
+// =======================================================================================
+
+img,
+video {
+  pointer-events: none;
+}
+
+// =======================================================================================
+// Toolbar
+// =======================================================================================
+
+.toolbar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: var(--container-background);
+  padding: 12px;
+  border: 2px solid var(--container-border-color);
+  box-shadow: 0 4px 4px var(--container-background);
+  display: flex;
+  gap: 8px;
+  z-index: 1000;
+
+  button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #0056b3;
+    }
+  }
+}
