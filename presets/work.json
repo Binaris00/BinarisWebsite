@@ -1,0 +1,14 @@
+{
+    "cards": {
+        "start_work": {
+            "coords": [253, 121],
+            "center": false
+        },
+        "presentation": {
+            "coords": [0, 0],
+            "center": true
+        }
+    },
+
+    "theme": "neobrutalism"
+}

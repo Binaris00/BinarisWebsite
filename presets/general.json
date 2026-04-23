@@ -1,0 +1,18 @@
+{
+    "cards": {
+        "start": {
+            "coords": [500, 120],
+            "center": false
+        },
+        "presentation": {
+            "coords": [0, 0],
+            "center": true
+        },
+        "gifs/cat": {
+            "coords": [421, 234],
+            "center": false
+        }
+    },
+
+    "theme": "neobrutalism"
+}

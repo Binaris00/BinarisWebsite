@@ -1,6 +1,7 @@
 import { SpawnedFrom } from './types'
 import { extractFrontmatter, getCardType, parseMarkdown, removeFrontmatter, setExtraClasses } from './makdown_utils'
 import { addCanvasEventsListeners, addInternalLinkListeners, makeCardDraggable } from './event_listeners'
+import moment from 'moment'
 
 // DOM
 
@@ -35,6 +36,8 @@ const centerY = Math.round(
 createCard('start', 500, 120)
 createCard('presentation', centerX, centerY)
 createCard('gifs/cat', 421, 234)
+
+document.title = 'new Binaris(' + moment().format('DcMtYYYY') + ')';
 
 addCanvasEventsListeners()
 
