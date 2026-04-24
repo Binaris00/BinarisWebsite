@@ -3,7 +3,7 @@ import { extractFrontmatter, getCardType, parseMarkdown, removeFrontmatter, setE
 import { addCanvasEventsListeners, addInternalLinkListeners, makeCardDraggable } from './event_listeners'
 import moment from 'moment'
 import { safetlyCheckPreset } from './preset_utils'
-import { initButtonTheme, setThemeButtonName, toggleDeleteMode, toggleDropdown } from './button_utils'
+import { initButtonTheme, setThemeButtonName, toggleClickSound, toggleDeleteMode, toggleDropdown } from './button_utils'
 
 // DOM
 
@@ -11,7 +11,8 @@ export const canvas = document.getElementById('canvas') as HTMLElement
 export const canvasBackground = document.getElementById('canvas-background-effect') as HTMLElement
 export const buttonDelete = document.getElementById('button-delete-mode') as HTMLButtonElement
 export const buttonTheme = document.getElementById('button-themes') as HTMLButtonElement
-export const buttonThemeContent = document.getElementById('themes-content') as HTMLElement;
+export const buttonThemeContent = document.getElementById('themes-content') as HTMLElement
+export const buttonClickSound = document.getElementById('button-click-sound') as HTMLElement
 
 // State
 
@@ -21,6 +22,7 @@ export let startY = 0
 export let canvasX = 0
 export let canvasY = 0
 export let deleteMode = false
+export let clickSoundActive = true
 
 export const activeCards = new Set<Card>()
 
@@ -29,6 +31,7 @@ export const activeCards = new Set<Card>()
 export const centerX = Math.round(canvas.getBoundingClientRect().left + document.documentElement.scrollLeft + canvas.clientWidth / 2)
 export const centerY = Math.round(canvas.getBoundingClientRect().top + document.documentElement.scrollTop + canvas.clientHeight / 2)
 export const validPresets = [ "general", "work" ]
+const clickSound = new Audio('click_sound.mp3');
 
 export const validThemes = {
   "neobrutalism": "Neobrutalism",
@@ -101,6 +104,10 @@ export function setDeleteMode(val: boolean) {
   deleteMode = val
 }
 
+export function setClickSound(val: boolean) {
+  clickSoundActive = val
+}
+
 export function isInActiveCards(val: string): boolean {
   for (var card of activeCards) {
     if (card.id === val) return true;
@@ -117,5 +124,16 @@ export function getCard(val: string): Card | null {
   return null;
 }
 
+export function playSound() {
+  if (!clickSoundActive) return
+  clickSound.currentTime = 0; 
+  clickSound.play();
+}
+
 buttonDelete.addEventListener('click', toggleDeleteMode)
 buttonTheme.addEventListener('click', toggleDropdown)
+buttonClickSound.addEventListener('click', toggleClickSound)
+
+document.body.addEventListener('mousedown', () => {
+  playSound()
+});

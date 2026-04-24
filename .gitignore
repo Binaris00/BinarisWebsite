@@ -21,7 +21,6 @@ src/test/style.css
 /docs/.vitepress/cache
 /docs/.vitepress/.temp
 /packages/vite/LICENSE
-dist
 dist-ssr
 explorations
 node_modules

@@ -290,16 +290,18 @@ video {
 
   button {
     color: var(--text-color);
+    font-size: var(--p-size);
+    font-weight: var(--p-weight);
+    line-height: var(--p-line-height);
+    letter-spacing: var(--p-letter-spacing);
     border: none;
     padding: 10px 16px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
     transition: background 0.2s;
 
     &:hover {
-      background: #747576;
+      background: color-mix(in srgb, var(--text-color), var(--container-background) 90%);
     }
   }
 }
@@ -330,5 +332,5 @@ video {
 }
 
 .dropdown a:hover {
-  background-color: #ddd;
+  background-color: color-mix(in srgb, var(--text-color), var(--container-background) 90%);
 }

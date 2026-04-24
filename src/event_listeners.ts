@@ -1,4 +1,4 @@
-import { canvas, canvasBackground, canvasX, canvasY, createCard, deleteMode, isPanning, setCanvasX, setCanvasY, setPanning, setStartX, setStartY, startX, startY } from './main';
+import { canvas, canvasBackground, canvasX, canvasY, createCard, deleteMode, isPanning, playSound, setCanvasX, setCanvasY, setPanning, setStartX, setStartY, startX, startY } from './main';
 import { removeCard } from './makdown_utils';
 
 
@@ -34,6 +34,7 @@ export function addInternalLinkListeners(card: HTMLElement): void {
     card.addEventListener('mousedown', (e) => {
         if ((e.target as HTMLElement).closest('a')) return
 
+        playSound()
         e.stopPropagation()
         isDragging = true
         card.style.cursor = 'grabbing'

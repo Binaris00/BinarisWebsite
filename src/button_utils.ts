@@ -1,4 +1,4 @@
-import { deleteMode, buttonDelete, setDeleteMode, buttonTheme, validThemes, buttonThemeContent } from './main';
+import { deleteMode, buttonDelete, setDeleteMode, buttonTheme, validThemes, buttonThemeContent, clickSoundActive, setClickSound, buttonClickSound } from './main';
 
 
 export function toggleDeleteMode() {
@@ -29,12 +29,21 @@ export function initButtonTheme() {
 }
 
 export function toggleDropdown() {
-    console.log("preset")
     if (buttonThemeContent.style.display === 'flex') {
         buttonThemeContent.style.display = 'none'
     } else {
         buttonThemeContent.style.display = 'flex'
     }
+}
+
+export function toggleClickSound() {
+    if (clickSoundActive) {
+        buttonClickSound.innerHTML = "Turn on click sound"
+    } else {
+        buttonClickSound.innerHTML = "Turn off click sound"
+    }
+    
+    setClickSound(!clickSoundActive)
 }
 
 export function setThemeButtonName(val: string | null) {
