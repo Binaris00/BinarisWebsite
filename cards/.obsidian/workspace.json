@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "markdown_test.md",
+                "file": "commissions/extracmds.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "markdown_test"
+              "title": "extracmds"
             }
           },
           {
@@ -201,6 +201,14 @@
   },
   "active": "9b68020c2b7d0208",
   "lastOpenFiles": [
+    "commissions/herobrines_like.md",
+    "commissions/extracmds.md",
+    "commissions/exploration_revamped.md",
+    "commissions/cobblemon_raids.md",
+    "commissions/cobblemon_legendary_spawn.md",
+    "commissions/biome_loot_table.md",
+    "commissions/tags/fabric_mods.md",
+    "markdown_test.md",
     "recommendations_panel.md",
     "start.md",
     "recommendations/web/typescale.net.md",
@@ -209,10 +217,6 @@
     "commission_board.md",
     "electroblobs wizardry redux.md",
     "recommendations/software",
-    "commissions/cobblemon_legendary_spawn.md",
-    "recommendations",
-    "markdown_test.md",
-    "commissions/cobblemon_raids.md",
-    "commissions/biome_loot_table.md"
+    "recommendations"
   ]
 }

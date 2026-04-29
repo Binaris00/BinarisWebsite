@@ -1,5 +1,9 @@
 {
     "cards": {
+        "instructions": {
+            "coords": [500, 450],
+            "center": false
+        },
         "start_work": {
             "coords": [253, 121],
             "center": false

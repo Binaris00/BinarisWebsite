@@ -55,119 +55,6 @@
   --neo-card-shadow: #22222230;
 }
 
-[data-color-theme='neobrutalism'] {
-  --canvas-background-0:    var(--neo-background);
-  --canvas-effect:          var(--neo-background-effect);
-  --container-background:   var(--neo-color-gray);
-  --container-border-color: var(--neo-color-black);
-  --text-color:             var(--neo-color-black);
-  --container-shadow:       var(--neo-card-shadow);
-
-  --pink:   var(--neo-color-pink);
-  --red:    var(--neo-color-red);
-  --yellow: var(--neo-color-orange); // TODO YELLOW
-  --green:  var(--neo-color-green);
-  --blue:   var(--neo-color-blue);
-  --purple: var(--neo-color-purple);
-  --gray:   var(--neo-color-gray);
-}
-
-[data-color-theme='catppuccin-mocha'] {
-  --canvas-background-0:    var(--ctp-mocha-crust);
-  --canvas-effect:          var(--ctp-mocha-mantle);
-  --container-background:   var(--ctp-mocha-surface0);
-  --container-border-color: var(--ctp-mocha-overlay0);
-  --text-color:             var(--ctp-mocha-text);
-  --container-shadow:       var(--neo-card-shadow);
-
-  --pink:   var(--ctp-mocha-pink);
-  --red:    var(--ctp-mocha-red);
-  --yellow: var(--ctp-mocha-yellow);
-  --green:  var(--ctp-mocha-green);
-  --blue:   var(--ctp-mocha-blue);
-  --purple: var(--ctp-mocha-lavender);
-  --gray:   var(--ctp-mocha-red);
-}
-
-[data-color-theme='catppuccin-macchiato'] {
-  --canvas-background-0:    var(--ctp-macchiato-crust);
-  --canvas-effect:          var(--ctp-macchiato-mantle);
-  --container-background:   var(--ctp-macchiato-surface0);
-  --container-border-color: var(--ctp-macchiato-overlay0);
-  --text-color:             var(--ctp-macchiato-text);
-  --container-shadow:       var(--neo-card-shadow);
-
-  --pink:   var(--ctp-macchiato-pink);
-  --red:    var(--ctp-macchiato-red);
-  --yellow: var(--ctp-macchiato-yellow);
-  --green:  var(--ctp-macchiato-green);
-  --blue:   var(--ctp-macchiato-blue);
-  --purple: var(--ctp-macchiato-lavender);
-  --gray:   var(--ctp-mocha-red);
-}
-
-[data-color-theme='catppuccin-frappe'] {
-  --canvas-background-0:    var(--ctp-frappe-crust);
-  --canvas-effect:          var(--ctp-frappe-mantle);
-  --container-background:   var(--ctp-frappe-surface0);
-  --container-border-color: var(--ctp-frappe-overlay0);
-  --text-color:             var(--ctp-frappe-text);
-  --container-shadow:       var(--neo-card-shadow);
-
-  --pink:   var(--ctp-frappe-pink);
-  --red:    var(--ctp-frappe-red);
-  --yellow: var(--ctp-frappe-yellow);
-  --green:  var(--ctp-frappe-green);
-  --blue:   var(--ctp-frappe-blue);
-  --purple: var(--ctp-frappe-lavender);
-  --gray:   var(--ctp-mocha-red);
-}
-
-[data-color-theme='catppuccin-latte'] {
-  --canvas-background-0:    var(--ctp-latte-crust);
-  --canvas-effect:          var(--ctp-latte-mantle);
-  --container-background:   var(--ctp-latte-surface0);
-  --container-border-color: var(--ctp-latte-overlay0);
-  --text-color:             var(--ctp-latte-text);
-  --container-shadow:       var(--neo-card-shadow);
-
-  --pink:   var(--ctp-latte-pink);
-  --red:    var(--ctp-latte-red);
-  --yellow: var(--ctp-latte-yellow);
-  --green:  var(--ctp-latte-green);
-  --blue:   var(--ctp-latte-blue);
-  --purple: var(--ctp-latte-lavender);
-  --gray:   var(--ctp-mocha-red);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  overflow: hidden;
-  background: var(--canvas-background-0);
-}
-
-#canvas-background-effect {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  cursor: grab;
-  background:
-    linear-gradient(0deg, var(--canvas-effect) 1px, transparent 1px),
-    linear-gradient(90deg, var(--canvas-effect) 1px, transparent 1px);
-  background-size: 30px 30px;
-}
-
-#canvas {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-}
 
 // =======================================================================================
 // Cards
@@ -201,6 +88,106 @@ body {
   }
 }
 
+// =======================================================================================
+// General style
+// =======================================================================================
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow: hidden;
+  background: var(--canvas-background-0);
+}
+
+#canvas-background-effect {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  cursor: grab;
+  background:
+    linear-gradient(0deg, var(--canvas-effect) 1px, transparent 1px),
+    linear-gradient(90deg, var(--canvas-effect) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+#canvas {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+// =======================================================================================
+// Themes
+// =======================================================================================
+
+// Neobrutalism
+
+[data-color-theme='neobrutalism'] {
+  --canvas-background-0:    var(--neo-background);
+  --canvas-effect:          var(--neo-background-effect);
+  --container-background:   var(--neo-color-gray);
+  --container-border-color: var(--neo-color-black);
+  --text-color:             var(--neo-color-black);
+  --container-shadow:       var(--neo-card-shadow);
+
+  --pink:   var(--neo-color-pink);
+  --red:    var(--neo-color-red);
+  --yellow: var(--neo-color-orange); // TODO YELLOW
+  --green:  var(--neo-color-green);
+  --blue:   var(--neo-color-blue);
+  --purple: var(--neo-color-purple);
+  --gray:   var(--neo-color-gray);
+  --white:  var(--neo-color-white);
+  --black:  var(--neo-color-black);
+}
+
+$colors: "blue", "red", "yellow", "green", "pink", "purple";
+
+[data-color-theme='neobrutalism'] {
+  @each $color in $colors {
+    .card-color-#{$color} {
+      background-color: color-mix(in srgb, var(--#{$color}), var(--container-background) 60%);
+    }
+  }
+}
+
+// Index cards
+
+[data-color-theme='index-cards'] {
+  --canvas-background-0:    var(--neo-background);
+  --canvas-effect:          var(--neo-background-effect);
+  --container-background:   var(--neo-color-gray);
+  --container-border-color: var(--neo-color-black);
+  --text-color:             var(--neo-color-black);
+  --container-shadow:       var(--neo-card-shadow);
+
+  --pink:   var(--neo-color-pink);
+  --red:    var(--neo-color-red);
+  --yellow: var(--neo-color-orange); // TODO YELLOW
+  --green:  var(--neo-color-green);
+  --blue:   var(--neo-color-blue);
+  --purple: var(--neo-color-purple);
+  --gray:   var(--neo-color-gray);
+  --white:  var(--neo-color-white);
+  --black:  var(--neo-color-black);
+}
+
+[data-color-theme='index-cards'] #canvas-background-effect {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-image: radial-gradient(
+      circle at center,
+      black 0.1rem,
+      transparent 0
+    ), radial-gradient(circle at center, black 0.1rem, transparent 0);
+  background-size: 30px 30px;
+}
 
 
 // =======================================================================================

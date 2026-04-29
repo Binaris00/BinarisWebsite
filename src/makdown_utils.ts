@@ -56,12 +56,13 @@ export function getCardType(frontmatter: Frontmatter): string {
 }
 
 export function setExtraClasses(frontmatter: Frontmatter): string {
+    // atm its just card-color
     return setBorderColor(frontmatter)
 }
 
 export function setBorderColor(frontmatter: Frontmatter): string {
-    if (!isValidFrontmatter(frontmatter, 'border-color')) return ''
-    return ' card-border-' + frontmatter['border-color']
+    if (!isValidFrontmatter(frontmatter, 'card-color')) return ''
+    return ' card-color-' + frontmatter['card-color']
 }
 
 export function removeCard(card: HTMLElement): void {

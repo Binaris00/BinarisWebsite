@@ -31,11 +31,11 @@ export const activeCards = new Set<Card>()
 export const centerX = Math.round(canvas.getBoundingClientRect().left + document.documentElement.scrollLeft + canvas.clientWidth / 2)
 export const centerY = Math.round(canvas.getBoundingClientRect().top + document.documentElement.scrollTop + canvas.clientHeight / 2)
 export const validPresets = [ "general", "work" ]
-const clickSound = new Audio('click_sound.mp3');
+const clickSound = new Audio('assets/voice_click_sound.wav');
 
 export const validThemes = {
   "neobrutalism": "Neobrutalism",
-  "onedark": "OneDark"
+  "index-cards": "Index Cards"
 }
 
 const preset = window.location.pathname.replace('/', '')
@@ -126,7 +126,7 @@ export function getCard(val: string): Card | null {
 
 export function playSound() {
   if (!clickSoundActive) return
-  clickSound.currentTime = 0; 
+  clickSound.currentTime = 0;
   clickSound.play();
 }
 

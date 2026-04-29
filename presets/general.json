@@ -1,7 +1,7 @@
 {
     "cards": {
-        "start": {
-            "coords": [500, 120],
+        "instructions": {
+            "coords": [500, 450],
             "center": false
         },
         "presentation": {
@@ -9,7 +9,7 @@
             "center": true
         },
         "gifs/cat": {
-            "coords": [421, 234],
+            "coords": [141, 74],
             "center": false
         }
     },
