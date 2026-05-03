@@ -17,10 +17,10 @@ export async function loadPreset(name: string): Promise<void> {
   for (const [cardName, entry] of Object.entries(preset.cards)) {
     const [x, y] = entry.coords
     if (entry.center) {
-        createCard(cardName, centerX, centerY)
+        createCard(cardName, centerX, centerY, false)
         continue
     }
 
-    createCard(cardName, x, y)
+    createCard(cardName, x, y, true)
   }
 }

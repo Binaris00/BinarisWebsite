@@ -61,7 +61,7 @@ const availableCards = Object.keys(cardFiles).map(path => path.replace('/cards/'
  * @param top - vertical position in px
  * @param spawnedFrom - position/size of the parent card (optional)
  */
-export async function createCard(baseField: string, left: number, top: number, spawnedFrom: SpawnedFrom | null = null): Promise<void> {
+export async function createCard(baseField: string, left: number, top: number, centerFix: boolean): Promise<void> {
   if (isInActiveCards(baseField)) return
 
   const matchedPath = availableCards.find(path => path === baseField || path.endsWith('/' + baseField));
@@ -86,10 +86,12 @@ export async function createCard(baseField: string, left: number, top: number, s
     div.style.left = left + 'px'
     div.style.top = top + 'px'
     div.style.transform = 'translate(-50%, -50%)'
-  } else {
+  } else if (centerFix){
     div.style.left = (left + centerX) + 'px'
     div.style.top = (top + centerY) + 'px'
-
+  } else {
+    div.style.left = left + 'px'
+    div.style.top = top + 'px'
   }
 
   activeCards.add(new Card(baseField, left, top, text, frontmatter))
@@ -151,7 +153,3 @@ export function playSound() {
 buttonDelete.addEventListener('click', toggleDeleteMode)
 buttonTheme.addEventListener('click', toggleDropdown)
 buttonClickSound.addEventListener('click', toggleClickSound)
-
-document.body.addEventListener('mousedown', () => {
-  playSound()
-});

@@ -19,12 +19,7 @@ export function addInternalLinkListeners(card: HTMLElement): void {
         const currentTop = parseInt(card.style.top || '0')
         const cardWidth = card.offsetWidth
 
-        createCard(pageName, currentLeft + cardWidth + 40, currentTop + Math.random() * 40 - 20, {
-            left: currentLeft,
-            top: currentTop,
-            width: cardWidth,
-            height: card.offsetHeight,
-        })
+        createCard(pageName, currentLeft + cardWidth + 40, currentTop, false)
     })
 } export function makeCardDraggable(card: HTMLElement): void {
     let isDragging = false
@@ -34,7 +29,6 @@ export function addInternalLinkListeners(card: HTMLElement): void {
     card.addEventListener('mousedown', (e) => {
         if ((e.target as HTMLElement).closest('a')) return
 
-        playSound()
         e.stopPropagation()
         isDragging = true
         card.style.cursor = 'grabbing'
