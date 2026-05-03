@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 import { Card, SpawnedFrom } from './types'
 import { extractFrontmatter, getCardType, parseMarkdown, removeFrontmatter, setExtraClasses } from './makdown_utils'
 import { addCanvasEventsListeners, addInternalLinkListeners, makeCardDraggable } from './event_listeners'
@@ -38,7 +40,7 @@ export const validThemes = {
   "index-cards": "Index Cards"
 }
 
-const preset = window.location.pathname.replace('/', '')
+const preset = window.location.hash.substring(1)
 safetlyCheckPreset(preset);
 
 document.title = 'new Binaris(' + moment().format('DcMtYYYY') + ')';
@@ -48,6 +50,9 @@ setThemeButtonName(document.documentElement.getAttribute('data-color-theme'))
 addCanvasEventsListeners()
 
 initButtonTheme()
+
+const cardFiles = import.meta.glob('/cards/**/*.md');
+const availableCards = Object.keys(cardFiles).map(path => path.replace('/cards/', '').replace('.md', ''));
 
 /**
  * Create a draggable card that will be added in the given position
@@ -59,7 +64,16 @@ initButtonTheme()
 export async function createCard(baseField: string, left: number, top: number, spawnedFrom: SpawnedFrom | null = null): Promise<void> {
   if (isInActiveCards(baseField)) return
 
-  let text = await fetch('/cards/' + baseField + '.md').then(r => r.text())
+  const matchedPath = availableCards.find(path => path === baseField || path.endsWith('/' + baseField));
+  let text = "";
+
+  if (!matchedPath) {
+    console.warn(`Couldn't find "${baseField}" in /cards/`);
+    text = await fetch('/cards/error.md').then(r => r.text())
+  } else {
+    text = await fetch('/cards/' + matchedPath + '.md').then(r => r.text())
+  }
+
   const frontmatter = extractFrontmatter(text)
 
   const div = document.createElement('div')
@@ -67,11 +81,15 @@ export async function createCard(baseField: string, left: number, top: number, s
   div.dataset.cardName = baseField
   text = removeFrontmatter(text)
   div.innerHTML = parseMarkdown(text)
-  div.style.left = left + 'px'
-  div.style.top = top + 'px'
 
   if (left === centerX && top === centerY) {
+    div.style.left = left + 'px'
+    div.style.top = top + 'px'
     div.style.transform = 'translate(-50%, -50%)'
+  } else {
+    div.style.left = (left + centerX) + 'px'
+    div.style.top = (top + centerY) + 'px'
+
   }
 
   activeCards.add(new Card(baseField, left, top, text, frontmatter))

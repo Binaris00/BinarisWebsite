@@ -1,5 +1,5 @@
 ---
-border-color: blue
+card-color: blue
 ---
 # Typescale.net
 

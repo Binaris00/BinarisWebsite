@@ -1,3 +1,8 @@
+---
+tags:
+  - Forge
+  - Public-Work
+---
 ### Tetra More Weapons
 
 ![Tetra more weapons](imgs/tetra_more_weapons_img.png)

@@ -1,6 +1,7 @@
 ---
-border-color: purple
+card-color: purple
 ---
+
 # Obsidian
 
 I discovered Obsidian thanks to [-Spanish Video- Alva Majo . 7 meses usando Godot ¿Me arrepiento?](https://youtu.be/DZqYvo3ZqYw?si=uwXW18NZWHvCj04Q&t=69) shows how the YouTuber used the app to take notes and learn the differences between Godot and Unity.

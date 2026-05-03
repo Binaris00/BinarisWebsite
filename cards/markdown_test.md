@@ -1,5 +1,5 @@
 ---
-border-color: pink
+card-color: pink
 ---
 # Markdown testing
 

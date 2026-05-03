@@ -9,7 +9,11 @@
             "center": true
         },
         "gifs/cat": {
-            "coords": [141, 74],
+            "coords": [100, -300],
+            "center": false
+        },
+        "commissions/index/commission_board": {
+            "coords": [-100, 100],
             "center": false
         }
     },

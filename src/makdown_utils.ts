@@ -18,6 +18,14 @@ export function parseMarkdown(text: string): string {
     let html = marked.parse(withLinks) as string
 
     html = html.replace(
+        /<img src="([^"]+)"/g, 
+        (match, src) => {
+            if (src.startsWith('http')) return match;            
+            return `<img src="/cards/${src}"`;
+        }
+    );
+
+    html = html.replace(
         /href="internal:([^"]+)"/g,
         'href="#" data-page="$1" class="internal-link"'
     )
@@ -56,13 +64,17 @@ export function getCardType(frontmatter: Frontmatter): string {
 }
 
 export function setExtraClasses(frontmatter: Frontmatter): string {
-    // atm its just card-color
-    return setBorderColor(frontmatter)
+    return setBorderColor(frontmatter) + setH1Display(frontmatter)
 }
 
 export function setBorderColor(frontmatter: Frontmatter): string {
     if (!isValidFrontmatter(frontmatter, 'card-color')) return ''
     return ' card-color-' + frontmatter['card-color']
+}
+
+export function setH1Display(frontmatter: Frontmatter): string {
+    if (!isValidFrontmatter(frontmatter, 'h1-display-lg')) return ''
+    return ' h1-display-lg'
 }
 
 export function removeCard(card: HTMLElement): void {

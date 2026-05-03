@@ -1,3 +1,8 @@
+---
+tags:
+  - Youtuber-Video-Work
+  - Fabric
+---
 ### Kit Custom Enchants
 
 ![Kit Custom Enchants](imgs/kit_custom_enchants_img.png)

@@ -88,6 +88,14 @@
   }
 }
 
+.card img {
+  max-width: 80%;
+  height: auto;
+  display: block;
+  margin: 10px auto;  
+  border: 2px solid var(--black); 
+}
+
 // =======================================================================================
 // General style
 // =======================================================================================
@@ -255,10 +263,18 @@ $colors: "blue", "red", "yellow", "green", "pink", "purple";
   }
 }
 
+.h1-display-lg h1 {
+  @include card-text('--page-title-size', '--page-title-weight', '--page-title-line-height', '--page-title-letter-spacing');
+  text-align: center;
+}
+
+
+
 img,
 video {
   pointer-events: none;
 }
+
 
 // =======================================================================================
 // Toolbar

@@ -1,5 +1,5 @@
 ---
-border-color: green
+card-color: green
 ---
 
 # Binaris Board

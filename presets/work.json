@@ -11,6 +11,14 @@
         "presentation": {
             "coords": [0, 0],
             "center": true
+        },
+        "commissions/index/commission_board": {
+            "coords": [17, 420],
+            "center": false
+        },
+        "commissions/index/commission_tags_board": {
+            "coords": [747, 90],
+            "center": false
         }
     },
 
