@@ -6,7 +6,7 @@ tags:
 ---
 ### Cobblemon Legendary Spawn
 
-![Cobblemon Legendary Spawn](imgs/cobblemon_legendary_spawn_img.png)
+![Cobblemon Legendary Spawn](cobblemon_legendary_spawn_img.png)
 
 Add news config to modify how/when a custom list of Pokémons (normally legendaries) will spawn, this handles things like flying/water spawn, special biome/weather conditions, and probability calculations, all inside a simple and fast config.
 

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "error.md",
+                "file": "start/personal_projects.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "error"
+              "title": "personal_projects"
             }
           }
         ]
@@ -185,14 +185,26 @@
   },
   "active": "ca58c6beabd21e1e",
   "lastOpenFiles": [
+    "start/work/work_presentation.md",
+    "start/work/work_external.md",
+    "start/social_media.md",
+    "start/personal_projects.md",
     "instructions.md",
-    "markdown_test.md",
+    "start/work/start_work.md",
+    "start/work",
+    "start/general/videogames_that_i_like.md",
+    "start/general/music_that_i_like.md",
+    "start/general/start.md",
+    "start/general",
+    "test/OLDstart.md",
+    "projects",
+    "test",
+    "start",
     "presentation.md",
-    "recommendations_panel.md",
-    "start.md",
-    "start_work.md",
+    "test/markdown_test.md",
     "error.md",
-    "electroblobs wizardry redux.md",
+    "recommendations/recommendations_panel.md",
+    "projects/electroblobs wizardry redux.md",
     "recommendations/web/typescale.net.md",
     "commissions/index/commission_board.md",
     "commissions/tags/fabric_mods.md",
@@ -204,13 +216,6 @@
     "commissions/list/cobblemon_raids.md",
     "commissions/list/exploration_revamped.md",
     "commissions/list/extracmds.md",
-    "commissions/list/herobrines_like.md",
-    "commissions/list/hour_limit.md",
-    "commissions/list/kit_custom_enchants.md",
-    "commissions/list/mobility_changer.md",
-    "commissions/list/multihitbox_lib.md",
-    "commissions/list/odyssey_pokedrop.md",
-    "commissions/list/sad_ditto.md",
     "imgs/cobblemon_legendary_spawn_img.png",
     "imgs/tetra_more_weapons_img.png",
     "imgs/shiny_converter_img.png",

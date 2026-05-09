@@ -8,7 +8,7 @@ tags:
 
 ### Shiny Converter
 
-![Shiny Converter NPC Image](imgs/shiny_converter_img.png)
+![Shiny Converter NPC Image](shiny_converter_img.png)
 
 Add a new GUI to change your shinies into custom items (NBT data support), config for changing GUI placement, text format and different Pokémon checks.
 

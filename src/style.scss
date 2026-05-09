@@ -66,6 +66,7 @@
   position: absolute;
   cursor: grab;
   user-select: none;
+  transition: background-color 0.3s;
 
   &:active {
     cursor: grabbing;
@@ -162,6 +163,11 @@ $colors: "blue", "red", "yellow", "green", "pink", "purple";
       background-color: color-mix(in srgb, var(--#{$color}), var(--container-background) 60%);
     }
   }
+}
+
+.can-be-deleted:hover {
+  background-color: color-mix(in srgb, var(--red), var(--container-background) 20%) !important;
+  cursor: pointer;
 }
 
 // Index cards
@@ -311,8 +317,8 @@ video {
 
 #themes-content {
   position: fixed;
-  top: 90px;
-  left: 150px;
+  top: 95px;
+  left: 210px;
   background: var(--container-background);
   border: 3px solid var(--container-border-color);
   display: none;

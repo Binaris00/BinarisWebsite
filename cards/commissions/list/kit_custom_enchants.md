@@ -5,7 +5,7 @@ tags:
 ---
 ### Kit Custom Enchants
 
-![Kit Custom Enchants](imgs/kit_custom_enchants_img.png)
+![Kit Custom Enchants](kit_custom_enchants_img.png)
 
 Custom and powerful enchants to minecraft, removes all the vanilla enchantments and provides very visual effects.
 

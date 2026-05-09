@@ -5,7 +5,7 @@ tags:
 ---
 ### Tetra More Weapons
 
-![Tetra more weapons](imgs/tetra_more_weapons_img.png)
+![Tetra more weapons](tetra_more_weapons_img.png)
 
 Adds compatibility to a list of mods to Tetra mod.
 
