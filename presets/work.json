@@ -1,23 +1,31 @@
 {
     "cards": {
-        "instructions": {
-            "coords": [500, 450],
-            "center": false
-        },
-        "start_work": {
-            "coords": [253, 121],
-            "center": false
-        },
         "presentation": {
             "coords": [0, 0],
             "center": true
         },
-        "commissions/index/commission_board": {
-            "coords": [17, 420],
+        "work_presentation": {
+            "coords": [71, 102],
             "center": false
         },
-        "commissions/index/commission_tags_board": {
-            "coords": [747, 90],
+        "instructions": {
+            "coords": [-700, 71],
+            "center": false
+        },
+        "work_external": {
+            "coords": [483, -61],
+            "center": false
+        },
+        "commission_board": {
+            "coords": [-793, -621],
+            "center": false
+        },
+        "commission_tags_board": {
+            "coords": [123, -331],
+            "center": false
+        },
+        "personal_projects": {
+            "coords": [-1203, -121],
             "center": false
         }
     },

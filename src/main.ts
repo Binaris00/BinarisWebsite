@@ -94,7 +94,7 @@ export async function createCard(baseField: string, left: number, top: number, c
     div.style.top = top + 'px'
   }
 
-  activeCards.add(new Card(baseField, left, top, text, frontmatter))
+  activeCards.add(new Card(baseField, left, top, text, frontmatter, div))
   canvas.appendChild(div)
   makeCardDraggable(div)
   addInternalLinkListeners(div)

@@ -13,13 +13,15 @@ export class Card {
   top: number;
   content: string;
   frontmatter: Frontmatter;
+  div: HTMLElement;
 
-  constructor(id: string, left: number, top: number, content: string, frontmatter: Frontmatter) {
+  constructor(id: string, left: number, top: number, content: string, frontmatter: Frontmatter, div: HTMLElement) {
     this.id = id
     this.left = left
     this.top = top
     this.content = content
     this.frontmatter = frontmatter
+    this.div = div
   }
 }
 
