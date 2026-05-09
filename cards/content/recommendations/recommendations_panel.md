@@ -5,8 +5,8 @@ All the software and things published here is because I think deserves more supp
 
 Related to Software:
 
-[[/recommendations/software/obsidian|Obsidian]]
+[[obsidian|Obsidian]]
 
 Util Websites:
 
-[[/recommendations/web/typescale.net|Typescale.net]]
+[[typescale.net|Typescale.net]]
