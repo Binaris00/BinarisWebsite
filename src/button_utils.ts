@@ -6,7 +6,7 @@ export function toggleDeleteMode() {
     buttonDelete.innerHTML = deleteMode ? 'Exit Delete Mode' : 'Enter Delete Mode'
 
     activeCards.forEach(c => {
-     if (deleteMode) {
+     if (deleteMode && !c.protec) {
       c.div.classList.add('can-be-deleted')
     } else {
       c.div.classList.remove('can-be-deleted');

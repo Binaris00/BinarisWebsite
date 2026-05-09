@@ -16,11 +16,23 @@ export async function loadPreset(name: string): Promise<void> {
 
   for (const [cardName, entry] of Object.entries(preset.cards)) {
     const [x, y] = entry.coords
-    if (entry.center) {
-        createCard(cardName, centerX, centerY, false)
+
+    if (entry.random) {
+        createCard(cardName, getRandomIntInclusive(-x, x), getRandomIntInclusive(-y, y), false, entry.protected)
         continue
     }
 
-    createCard(cardName, x, y, true)
+    if (entry.center) {
+        createCard(cardName, centerX, centerY, false, entry.protected)
+        continue
+    }
+
+    createCard(cardName, x, y, true, entry.protected)
   }
+}
+
+function getRandomIntInclusive(min: number, max: number) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
 }

@@ -32,7 +32,7 @@ export const activeCards = new Set<Card>()
 
 export const centerX = Math.round(canvas.getBoundingClientRect().left + document.documentElement.scrollLeft + canvas.clientWidth / 2)
 export const centerY = Math.round(canvas.getBoundingClientRect().top + document.documentElement.scrollTop + canvas.clientHeight / 2)
-export const validPresets = [ "general", "work" ]
+export const validPresets = [ "general", "work", "cats_gifts" ]
 const clickSound = new Audio('assets/voice_click_sound.wav');
 
 export const validThemes = {
@@ -59,9 +59,10 @@ const availableCards = Object.keys(cardFiles).map(path => path.replace('/cards/'
  * @param baseField - name of the .md file (without extension)
  * @param left - horizontal position in px
  * @param top - vertical position in px
- * @param spawnedFrom - position/size of the parent card (optional)
+ * @param centerFix - the cards that are spawned by links doesn't need the center fix
+ * @param protec - declaring if the card could be deleted by delete mode
  */
-export async function createCard(baseField: string, left: number, top: number, centerFix: boolean): Promise<void> {
+export async function createCard(baseField: string, left: number, top: number, centerFix: boolean, protec: boolean): Promise<void> {
   if (isInActiveCards(baseField)) return
 
   const matchedPath = availableCards.find(path => path === baseField || path.endsWith('/' + baseField));
@@ -94,9 +95,10 @@ export async function createCard(baseField: string, left: number, top: number, c
     div.style.top = top + 'px'
   }
 
-  activeCards.add(new Card(baseField, left, top, text, frontmatter, div))
+  const cardF = new Card(baseField, left, top, text, frontmatter, div, protec)
+  activeCards.add(cardF)
   canvas.appendChild(div)
-  makeCardDraggable(div)
+  makeCardDraggable(cardF)
   addInternalLinkListeners(div)
 }
 

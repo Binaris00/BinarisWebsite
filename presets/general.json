@@ -2,19 +2,27 @@
     "cards": {
         "instructions": {
             "coords": [500, 450],
-            "center": false
+            "center": false,
+            "random": false,
+            "protected": false
         },
         "presentation": {
             "coords": [0, 0],
-            "center": true
+            "center": true,
+            "random": false,
+            "protected": false
         },
         "gifs/cat": {
             "coords": [100, -300],
-            "center": false
+            "center": false,
+            "random": false,
+            "protected": false
         },
         "commissions/index/commission_board": {
             "coords": [-100, 100],
-            "center": false
+            "center": false,
+            "random": false,
+            "protected": false
         }
     },
 

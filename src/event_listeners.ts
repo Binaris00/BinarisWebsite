@@ -1,5 +1,6 @@
 import { canvas, canvasBackground, canvasX, canvasY, createCard, deleteMode, isPanning, playSound, setCanvasX, setCanvasY, setPanning, setStartX, setStartY, startX, startY } from './main';
 import { removeCard } from './makdown_utils';
+import { Card } from './types';
 
 
 // --------------------------
@@ -19,37 +20,40 @@ export function addInternalLinkListeners(card: HTMLElement): void {
         const currentTop = parseInt(card.style.top || '0')
         const cardWidth = card.offsetWidth
 
-        createCard(pageName, currentLeft + cardWidth + 40, currentTop, false)
+        createCard(pageName, currentLeft + cardWidth + 40, currentTop, false, false)
     })
-} export function makeCardDraggable(card: HTMLElement): void {
+} export function makeCardDraggable(card: Card): void {
     let isDragging = false
     let cardStartX = 0
     let cardStartY = 0
 
-    card.addEventListener('mousedown', (e) => {
+    card.div.addEventListener('mousedown', (e) => {
         if ((e.target as HTMLElement).closest('a')) return
 
         e.stopPropagation()
         isDragging = true
-        card.style.cursor = 'grabbing'
-        cardStartX = e.clientX - parseInt(card.style.left || '0')
-        cardStartY = e.clientY - parseInt(card.style.top || '0')
+        card.div.style.cursor = 'grabbing'
+        cardStartX = e.clientX - parseInt(card.div.style.left || '0')
+        cardStartY = e.clientY - parseInt(card.div.style.top || '0')
     })
 
     document.addEventListener('mousemove', (e) => {
         if (!isDragging) return
-        if (deleteMode) { card.remove(); return }
+        if (deleteMode && !card.protec) { 
+            card.div.remove(); 
+            return 
+        }
         e.preventDefault()
-        card.style.left = (e.clientX - cardStartX) + 'px'
-        card.style.top = (e.clientY - cardStartY) + 'px'
+        card.div.style.left = (e.clientX - cardStartX) + 'px'
+        card.div.style.top = (e.clientY - cardStartY) + 'px'
     })
 
     document.addEventListener('mouseup', () => {
         if (!isDragging) return
         isDragging = false
-        card.style.cursor = 'grab'
-        if (deleteMode) {
-            removeCard(card)
+        card.div.style.cursor = 'grab'
+        if (deleteMode && !card.protec) {
+            removeCard(card.div)
         }
     })
 }
