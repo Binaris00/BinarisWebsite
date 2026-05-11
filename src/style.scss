@@ -236,6 +236,34 @@ $colors: "blue", "red", "yellow", "green", "pink", "purple";
     list-style-position: inside;
   }
 
+a:link {
+  color: var(--text-color);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--container-border-color);
+  cursor: pointer;
+  transition: border-color 0.15s, opacity 0.15s;
+
+  &:hover {
+    border-bottom-color: var(--text-color);
+    opacity: 0.75;
+  }
+}
+
+a:visited {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--text-color);
+}
+
+a:active {
+  text-decoration: underline;
+  color: var(--text-color);
+}
+
   table {
     table-layout: auto;
     border-collapse: collapse;
@@ -313,6 +341,35 @@ video {
       background: color-mix(in srgb, var(--text-color), var(--container-background) 90%);
     }
   }
+}
+
+#presets-content {
+  position: fixed;
+  top: 95px;
+  left: 535px;
+  background: var(--container-background);
+  border: 3px solid var(--container-border-color);
+  display: none;
+  gap: 8px;
+  z-index: 1000;
+  overflow: auto;
+  flex-direction: column;
+}
+
+.preset-content-anchor {  
+  color: var(--text-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-preset {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-preset a:hover {
+  background-color: color-mix(in srgb, var(--text-color), var(--container-background) 90%);
 }
 
 #themes-content {

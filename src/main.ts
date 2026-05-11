@@ -5,7 +5,7 @@ import { extractFrontmatter, getCardType, parseMarkdown, removeFrontmatter, setE
 import { addCanvasEventsListeners, addInternalLinkListeners, makeCardDraggable } from './event_listeners'
 import moment from 'moment'
 import { safetlyCheckPreset } from './preset_utils'
-import { initButtonTheme, setThemeButtonName, toggleClickSound, toggleDeleteMode, toggleDropdown } from './button_utils'
+import { initButtonPreset, initButtonTheme, setThemeButtonName, toggleClickSound, toggleDeleteMode, toggleDropdown, togglePresetDropdown } from './button_utils'
 
 // DOM
 
@@ -15,6 +15,8 @@ export const buttonDelete = document.getElementById('button-delete-mode') as HTM
 export const buttonTheme = document.getElementById('button-themes') as HTMLButtonElement
 export const buttonThemeContent = document.getElementById('themes-content') as HTMLElement
 export const buttonClickSound = document.getElementById('button-click-sound') as HTMLElement
+export const buttonPreset = document.getElementById('button-preset') as HTMLElement
+export const buttonPresetContent = document.getElementById('presets-content') as HTMLElement
 
 // State
 
@@ -25,7 +27,6 @@ export let canvasX = 0
 export let canvasY = 0
 export let deleteMode = false
 export let clickSoundActive = true
-
 export const activeCards = new Set<Card>()
 
 // Init
@@ -50,6 +51,7 @@ setThemeButtonName(document.documentElement.getAttribute('data-color-theme'))
 addCanvasEventsListeners()
 
 initButtonTheme()
+initButtonPreset()
 
 const cardFiles = import.meta.glob('/cards/**/*.md');
 const availableCards = Object.keys(cardFiles).map(path => path.replace('/cards/', '').replace('.md', ''));
@@ -154,4 +156,5 @@ export function playSound() {
 
 buttonDelete.addEventListener('click', toggleDeleteMode)
 buttonTheme.addEventListener('click', toggleDropdown)
+buttonPreset.addEventListener('click', togglePresetDropdown)
 buttonClickSound.addEventListener('click', toggleClickSound)

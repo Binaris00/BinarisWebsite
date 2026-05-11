@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "core/presentation.md",
+                "file": "core/preset/social_media.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "presentation"
+              "title": "social_media"
             }
           }
         ]
@@ -185,13 +185,29 @@
   },
   "active": "ca58c6beabd21e1e",
   "lastOpenFiles": [
+    "core/preset/general/start.md",
+    "core/preset/work/my_series.md",
+    "content/series/tear_along_the_dotted_line.md",
+    "core/preset/my_games.md",
+    "error.md",
+    "content/series/scott_pilgrim_takes_off.md",
+    "content/series/arcane.md",
+    "content/series/monkie_kid.md",
+    "content/games/the_binding_of_isaac.md",
+    "content/series",
+    "content/games/ultrakill.md",
+    "content/games/katana_zero.md",
+    "content/games/celeste.md",
+    "content/games/terraria.md",
+    "content/games/minecraft.md",
+    "core/presentation.md",
+    "content/games",
     "vault_init.md",
     "core",
     "assets",
     "test/markdown_test.md",
     "test/OLDstart.md",
     "content",
-    "core/presentation.md",
     "core/instructions.md",
     "content/gifs/small_cat_hello_chat.md",
     "content/gifs/scuba_dance_cat.md",
@@ -200,20 +216,7 @@
     "content/gifs/gato_en_tocadiscos_spinning.md",
     "content/gifs/cat_side_eye.md",
     "content/gifs/cat_scuba_dance.md",
-    "content/gifs/cat_pet_pet_pet_pet_pet.md",
-    "content/gifs/cat_meme.md",
-    "content/gifs/bored_brown_fat_cat.md",
-    "content/gifs/gato_encerrado_con_otro.md",
-    "content/gifs/kitten_looking_around_scared.md",
-    "content/gifs/smart_cat_with_glasses_cam.md",
-    "core/preset/personal_projects.md",
-    "core/preset/work/work_presentation.md",
-    "core/preset/work/work_external.md",
-    "core/preset/social_media.md",
-    "start/work/start_work.md",
     "core/preset/work",
-    "core/preset/general/videogames_that_i_like.md",
-    "core/preset/general/music_that_i_like.md",
     "core/preset/general",
     "content/projects",
     "test",
@@ -224,8 +227,6 @@
     "assets/imgs/mobility_changer_img.png",
     "assets/imgs/kit_custom_enchants_img.png",
     "assets/imgs/herobrines_like_img.png",
-    "assets/imgs/cobblemon_raids_img.png",
-    "content/commissions/index",
-    "content/commissions/list"
+    "assets/imgs/cobblemon_raids_img.png"
   ]
 }

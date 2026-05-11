@@ -1,4 +1,6 @@
-import { deleteMode, buttonDelete, setDeleteMode, buttonTheme, validThemes, buttonThemeContent, clickSoundActive, setClickSound, buttonClickSound, activeCards } from './main';
+import { deleteMode, buttonDelete, setDeleteMode, buttonTheme, validThemes, buttonThemeContent, clickSoundActive, setClickSound, buttonClickSound, activeCards, buttonPresetContent, validPresets } from './main';
+import { removeCard } from './makdown_utils';
+import { loadPreset } from './preset_utils';
 
 
 export function toggleDeleteMode() {
@@ -36,11 +38,45 @@ export function initButtonTheme() {
     });
 }
 
+export function initButtonPreset() {
+    validPresets.forEach((p) => {
+        const anchor = document.createElement('a');
+
+        anchor.href = `#${p}`;
+        anchor.textContent = p;
+        anchor.className = 'preset-content-anchor'
+
+        anchor.addEventListener('click', (e) => {
+            e.preventDefault();
+            checkPreset(p)
+            togglePresetDropdown();
+        });
+
+        buttonPresetContent.appendChild(anchor);
+    })
+}
+
+export function checkPreset(preset: string) {
+    activeCards.forEach((c) => {
+        removeCard(c.div)
+    })
+
+    loadPreset(preset)
+}
+
 export function toggleDropdown() {
     if (buttonThemeContent.style.display === 'flex') {
         buttonThemeContent.style.display = 'none'
     } else {
         buttonThemeContent.style.display = 'flex'
+    }
+}
+
+export function togglePresetDropdown() {
+    if (buttonPresetContent.style.display === 'flex') {
+        buttonPresetContent.style.display = 'none'
+    } else {
+        buttonPresetContent.style.display = 'flex'
     }
 }
 
