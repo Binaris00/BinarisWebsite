@@ -21,7 +21,7 @@ export function parseMarkdown(text: string): string {
         /<img src="([^"]+)"/g, 
         (match, src) => {
             if (src.startsWith('http')) return match;            
-            return `<img src="/cards/${src}"`;
+            return `<img src="/cards/assets/imgs/${src}"`;
         }
     );
 
