@@ -5,7 +5,7 @@ export async function safetlyCheckPreset(preset: string) {
     if (validPresets.includes(preset)) {
         loadPreset(preset)
     } else {
-        loadPreset("general")
+        loadPreset("main")
     }
 }
 

@@ -1,0 +1,1 @@
+var e=`Heyo, I'm Binaris`;export{e as default};

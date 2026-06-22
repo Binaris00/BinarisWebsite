@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "888a5013e88136cc",
+        "id": "47bf7bb4e7ce2af7",
         "type": "tabs",
         "children": [
           {
-            "id": "ca58c6beabd21e1e",
+            "id": "4d751b91091bf932",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "core/preset/social_media.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "social_media"
+              "title": "New tab"
             }
           }
         ]
@@ -41,7 +37,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -183,44 +181,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "ca58c6beabd21e1e",
+  "active": "7a9cc321ffc3f3b7",
   "lastOpenFiles": [
-    "core/preset/general/start.md",
+    "content/commissions/tags/public/public_work_mods_2.md",
+    "content/commissions/tags/public/public_work_mods_1.md",
+    "content/commissions/tags/public",
+    "content/commissions/tags/server/server_work_mods_1.md",
+    "content/commissions/tags/server/server_work_mods_2.md",
+    "content/commissions/tags/server/server_work_mods_3.md",
+    "content/commissions/tags/server",
+    "content/commissions/tags/youtube/youtube_video_works_1.md",
+    "content/commissions/tags/youtube/youtube_video_works_2.md",
+    "content/commissions/tags/youtube",
+    "content/commissions/tags/forge_mods.md",
+    "content/commissions/tags/fabric/fabric_mods_7.md",
+    "content/commissions/tags/fabric/fabric_mods_6.md",
+    "content/commissions/tags/fabric/fabric_mods_5.md",
+    "content/commissions/tags/fabric/fabric_mods_4.md",
+    "content/commissions/tags/fabric/fabric_mods_3.md",
+    "content/commissions/tags/fabric/fabric_mods_2.md",
+    "content/commissions/tags/fabric/fabric_mods_1.md",
+    "content/commissions/tags/cobblemon/cobblemon_mods_1.md",
+    "content/commissions/tags/cobblemon/cobblemon_mods_3.md",
+    "content/commissions/tags/cobblemon/cobblemon_mods_2.md",
+    "content/commissions/index/commission_tags_board.md",
+    "content/commissions/tags/fabric",
+    "content/commissions/tags/cobblemon",
+    "error.md",
     "core/preset/work/my_series.md",
+    "core/preset/work/work_presentation.md",
+    "core/preset/social_media.md",
+    "core/preset/general/start.md",
     "content/series/tear_along_the_dotted_line.md",
     "core/preset/my_games.md",
-    "error.md",
-    "content/series/scott_pilgrim_takes_off.md",
-    "content/series/arcane.md",
-    "content/series/monkie_kid.md",
-    "content/games/the_binding_of_isaac.md",
     "content/series",
-    "content/games/ultrakill.md",
-    "content/games/katana_zero.md",
-    "content/games/celeste.md",
-    "content/games/terraria.md",
-    "content/games/minecraft.md",
-    "core/presentation.md",
     "content/games",
-    "vault_init.md",
     "core",
     "assets",
-    "test/markdown_test.md",
-    "test/OLDstart.md",
     "content",
-    "core/instructions.md",
-    "content/gifs/small_cat_hello_chat.md",
-    "content/gifs/scuba_dance_cat.md",
-    "content/gifs/happy_cat_blue_driving_car.md",
-    "gifs/looks_around_scared_cat.md",
-    "content/gifs/gato_en_tocadiscos_spinning.md",
-    "content/gifs/cat_side_eye.md",
-    "content/gifs/cat_scuba_dance.md",
-    "core/preset/work",
-    "core/preset/general",
-    "content/projects",
-    "test",
-    "core/preset",
     "assets/imgs/cobblemon_legendary_spawn_img.png",
     "assets/imgs/tetra_more_weapons_img.png",
     "assets/imgs/shiny_converter_img.png",

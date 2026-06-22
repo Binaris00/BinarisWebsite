@@ -33,8 +33,8 @@ export const activeCards = new Set<Card>()
 
 export const centerX = Math.round(canvas.getBoundingClientRect().left + document.documentElement.scrollLeft + canvas.clientWidth / 2)
 export const centerY = Math.round(canvas.getBoundingClientRect().top + document.documentElement.scrollTop + canvas.clientHeight / 2)
-export const validPresets = [ "general", "work", "cats_gifts" ]
-const clickSound = new Audio('assets/voice_click_sound.wav');
+export const validPresets = [ "main", "work", "cats_gifts" ]
+// const clickSound = new Audio('assets/voice_click_sound.wav');
 
 export const validThemes = {
   "neobrutalism": "Neobrutalism",
@@ -53,7 +53,7 @@ addCanvasEventsListeners()
 initButtonTheme()
 initButtonPreset()
 
-const cardFiles = import.meta.glob('/cards/**/*.md');
+const cardFiles = import.meta.glob('/cards/**/*.md', { query: '?raw', import: 'default' });
 const availableCards = Object.keys(cardFiles).map(path => path.replace('/cards/', '').replace('.md', ''));
 
 /**
@@ -150,8 +150,8 @@ export function getCard(val: string): Card | null {
 
 export function playSound() {
   if (!clickSoundActive) return
-  clickSound.currentTime = 0;
-  clickSound.play();
+//  clickSound.currentTime = 0;
+//  clickSound.play();
 }
 
 buttonDelete.addEventListener('click', toggleDeleteMode)

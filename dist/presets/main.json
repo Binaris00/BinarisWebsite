@@ -1,0 +1,41 @@
+{
+    "cards": {
+        "instructions": {
+            "coords": [100, 120],
+            "center": false,
+            "random": false,
+            "protected": false
+        },
+        "presentation": {
+            "coords": [0, 0],
+            "center": true,
+            "random": false,
+            "protected": false
+        },
+        "start": {
+            "coords": [31, 53],
+            "center": false,
+            "random": false,
+            "protected": true
+        },
+        "my_series": {
+            "coords": [-703, -321],
+            "center": false,
+            "random": false,
+            "protected": false
+        },
+        "my_games": {
+            "coords": [123, -331],
+            "center": false,
+            "random": false,
+            "protected": false
+        },
+        "social_media": {
+            "coords": [-683, 51],
+            "center": false,
+            "random": false,
+            "protected": false
+        }
+    },
+    "theme": "neobrutalism"
+}
