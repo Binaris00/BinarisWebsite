@@ -27,6 +27,7 @@ export let canvasX = 0
 export let canvasY = 0
 export let deleteMode = false
 export let clickSoundActive = true
+export let isDebug = true
 export const activeCards = new Set<Card>()
 
 // Init
@@ -95,6 +96,13 @@ export async function createCard(baseField: string, left: number, top: number, c
   } else {
     div.style.left = left + 'px'
     div.style.top = top + 'px'
+  }
+
+  if (isDebug) {
+    const debugLabel = document.createElement('div')
+    debugLabel.className = 'debug-label'
+    debugLabel.textContent = `${left}, ${top}`
+    div.appendChild(debugLabel)
   }
 
   const cardF = new Card(baseField, left, top, text, frontmatter, div, protec)

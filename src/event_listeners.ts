@@ -1,4 +1,4 @@
-import { canvas, canvasBackground, canvasX, canvasY, createCard, deleteMode, isPanning, playSound, setCanvasX, setCanvasY, setPanning, setStartX, setStartY, startX, startY } from './main';
+import { canvas, canvasBackground, canvasX, canvasY, centerX, centerY, createCard, deleteMode, isDebug, isPanning, playSound, setCanvasX, setCanvasY, setPanning, setStartX, setStartY, startX, startY } from './main';
 import { removeCard } from './makdown_utils';
 import { Card } from './types';
 
@@ -43,9 +43,19 @@ export function addInternalLinkListeners(card: HTMLElement): void {
             card.div.remove(); 
             return 
         }
+        const x = e.clientX - cardStartX
+        const y = e.clientY - cardStartY
+
+        
+
         e.preventDefault()
-        card.div.style.left = (e.clientX - cardStartX) + 'px'
-        card.div.style.top = (e.clientY - cardStartY) + 'px'
+        card.div.style.left = (x) + 'px'
+        card.div.style.top = (y) + 'px'
+
+        if (isDebug) {
+            const label = card.div.querySelector('.debug-label') as HTMLElement
+            if (label) label.textContent = `${x - centerX}, ${y - centerY}`
+        }
     })
 
     document.addEventListener('mouseup', () => {
