@@ -34,7 +34,7 @@ export const activeCards = new Set<Card>()
 
 export const centerX = Math.round(canvas.getBoundingClientRect().left + document.documentElement.scrollLeft + canvas.clientWidth / 2)
 export const centerY = Math.round(canvas.getBoundingClientRect().top + document.documentElement.scrollTop + canvas.clientHeight / 2)
-export const validPresets = [ "main", "work", "cats_gifts" ]
+export const validPresets = [ "main", "work", "cats_gifts", "links"]
 // const clickSound = new Audio('assets/voice_click_sound.wav');
 
 export const validThemes = {
