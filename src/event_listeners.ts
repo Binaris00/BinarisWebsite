@@ -19,7 +19,7 @@ export function addInternalLinkListeners(card: HTMLElement): void {
         const currentLeft = parseInt(card.style.left || '0')
         const currentTop = parseInt(card.style.top || '0')
         const cardWidth = card.offsetWidth
-
+        playSound()
         createCard(pageName, currentLeft + cardWidth + 40, currentTop, false, false)
     })
 } export function makeCardDraggable(card: Card): void {

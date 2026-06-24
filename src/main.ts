@@ -27,7 +27,7 @@ export let canvasX = 0
 export let canvasY = 0
 export let deleteMode = false
 export let clickSoundActive = true
-export let isDebug = true
+export let isDebug = false
 export const activeCards = new Set<Card>()
 
 // Init
@@ -35,7 +35,7 @@ export const activeCards = new Set<Card>()
 export const centerX = Math.round(canvas.getBoundingClientRect().left + document.documentElement.scrollLeft + canvas.clientWidth / 2)
 export const centerY = Math.round(canvas.getBoundingClientRect().top + document.documentElement.scrollTop + canvas.clientHeight / 2)
 export const validPresets = [ "main", "work", "cats_gifts", "links"]
-// const clickSound = new Audio('assets/voice_click_sound.wav');
+const clickSound = new Audio('https://files.catbox.moe/yp5pf1.wav');
 
 export const validThemes = {
   "neobrutalism": "Neobrutalism",
@@ -158,8 +158,8 @@ export function getCard(val: string): Card | null {
 
 export function playSound() {
   if (!clickSoundActive) return
-//  clickSound.currentTime = 0;
-//  clickSound.play();
+  clickSound.currentTime = 0;
+  clickSound.play();
 }
 
 buttonDelete.addEventListener('click', toggleDeleteMode)
