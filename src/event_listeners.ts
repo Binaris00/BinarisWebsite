@@ -1,5 +1,4 @@
-import { canvas, canvasBackground, canvasX, canvasY, createCard, isPanning, playSound, setCanvasX, setCanvasY, setPanning, setStartX, setStartY, startX, startY } from './main';
-import { removeCard } from './makdown_utils';
+import { canvas, canvasBackground, canvasX, canvasY, createCard, getCard, inTransition, isInActiveCards, isPanning, playSound, setCanvasX, setCanvasY, setPanning, setStartX, setStartY, setTransition, startX, startY } from './main';
 import { Card } from './types';
 
 
@@ -10,19 +9,27 @@ import { Card } from './types';
  * When an [[internal link]] is clicked, spawn a new card to the right.
  */
 export function addInternalLinkListeners(card: HTMLElement): void {
-    card.addEventListener('click', (e) => {
-        const link = (e.target as HTMLElement).closest('a.internal-link') as HTMLAnchorElement | null
-        if (!link) return
-        e.preventDefault()
+  card.addEventListener('click', (e) => {
+    const link = (e.target as HTMLElement).closest('a.internal-link') as HTMLAnchorElement | null
+    if (!link) return
+    e.preventDefault()
+    const pageName = decodeURIComponent(link.dataset.page ?? '')
 
-        const pageName = decodeURIComponent(link.dataset.page ?? '')
-        const currentLeft = parseInt(card.style.left || '0')
-        const currentTop = parseInt(card.style.top || '0')
-        const cardWidth = card.offsetWidth
-        playSound()
-        createCard(pageName, currentLeft + cardWidth + 40, currentTop, false)
-    })
-} 
+    if (isInActiveCards(pageName)) {
+      const existingCard = getCard(pageName)
+      if (existingCard === null) return
+      playSound()
+      goToCard(existingCard)
+      return
+    }
+
+    const currentLeft = parseInt(card.style.left || '0')
+    const currentTop = parseInt(card.style.top || '0')
+    const cardWidth = card.offsetWidth
+    playSound()
+    createCard(pageName, currentLeft + cardWidth + 40, currentTop, false)
+  })
+}
 
 export function makeCardDraggable(card: Card): void {
   let isDragging = false
@@ -36,6 +43,7 @@ export function makeCardDraggable(card: Card): void {
   }
 
   function onStart(e: MouseEvent | TouchEvent) {
+    if (inTransition) return
     if ((e.target as HTMLElement).closest('a')) return
     e.stopPropagation()
     isDragging = true
@@ -47,6 +55,7 @@ export function makeCardDraggable(card: Card): void {
 
   function onMove(e: MouseEvent | TouchEvent) {
     if (!isDragging) return
+    if (inTransition) return
     e.preventDefault()
     const { x, y } = getClient(e)
     card.div.style.left = (x - cardStartX) + 'px'
@@ -54,6 +63,7 @@ export function makeCardDraggable(card: Card): void {
   }
 
   function onEnd() {
+    if (inTransition) return
     if (!isDragging) return
     isDragging = false
     card.div.style.cursor = 'grab'
@@ -78,6 +88,7 @@ export function addCanvasEventsListeners() {
 
   function onStart(e: MouseEvent | TouchEvent) {
     if ((e.target as HTMLElement).closest('.card')) return
+    if (inTransition) return
     setPanning(true)
     const { x, y } = getClient(e)
     setStartX(x - canvasX)
@@ -87,6 +98,7 @@ export function addCanvasEventsListeners() {
 
   function onMove(e: MouseEvent | TouchEvent) {
     if (!isPanning) return
+    if (inTransition) return
     const { x, y } = getClient(e)
     setCanvasX(x - startX)
     setCanvasY(y - startY)
@@ -95,6 +107,7 @@ export function addCanvasEventsListeners() {
   }
 
   function onEnd() {
+    if (inTransition) return
     setPanning(false)
     canvasBackground.style.cursor = 'grab'
   }
@@ -105,4 +118,56 @@ export function addCanvasEventsListeners() {
   document.addEventListener('touchmove', onMove, { passive: false })
   document.addEventListener('mouseup', onEnd)
   document.addEventListener('touchend', onEnd)
+}
+
+export function centerCanvas() {
+  canvas.style.transition = 'transform 0.8s ease'
+  canvasBackground.style.transition = 'background-position 0.8s ease'
+
+  setCanvasX(0)
+  setCanvasY(0)
+  canvas.style.transform = 'translate(0px, 0px)'
+  canvasBackground.style.backgroundPosition = '0px 0px'
+  setTransition(true)
+
+  const cleanup = () => {
+    canvas.style.transition = ''
+    canvasBackground.style.transition = ''
+    canvas.removeEventListener('transitionend', cleanup)
+    setTransition(false)
+  }
+  canvas.addEventListener('transitionend', cleanup)
+}
+
+export function goToCard(card: Card): void {
+  setTransition(true)
+  const cardRect = card.div.getBoundingClientRect()
+  const viewportRect = canvasBackground.getBoundingClientRect()
+
+  const cardCenterX = cardRect.left + cardRect.width / 2
+  const cardCenterY = cardRect.top + cardRect.height / 2
+  const viewportCenterX = viewportRect.left + viewportRect.width / 2
+  const viewportCenterY = viewportRect.top + viewportRect.height / 2
+
+  const deltaX = viewportCenterX - cardCenterX
+  const deltaY = viewportCenterY - cardCenterY
+
+  const newCanvasX = canvasX + deltaX
+  const newCanvasY = canvasY + deltaY
+
+  canvas.style.transition = 'transform 0.6s ease'
+  canvasBackground.style.transition = 'background-position 0.6s ease'
+
+  setCanvasX(newCanvasX)
+  setCanvasY(newCanvasY)
+  canvas.style.transform = `translate(${newCanvasX}px, ${newCanvasY}px)`
+  canvasBackground.style.backgroundPosition = `${newCanvasX % 30}px ${newCanvasY % 30}px`
+
+  const cleanup = () => {
+    canvas.style.transition = ''
+    canvasBackground.style.transition = ''
+    canvas.removeEventListener('transitionend', cleanup)
+    setTransition(false)
+  }
+  canvas.addEventListener('transitionend', cleanup)
 }

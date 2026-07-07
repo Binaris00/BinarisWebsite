@@ -2,7 +2,7 @@
 
 import { Card } from './types'
 import { extractFrontmatter, getCardType, parseMarkdown, removeFrontmatter, setExtraClasses } from './makdown_utils'
-import { addCanvasEventsListeners, addInternalLinkListeners, makeCardDraggable } from './event_listeners'
+import { addCanvasEventsListeners, addInternalLinkListeners, centerCanvas, makeCardDraggable } from './event_listeners'
 import moment from 'moment'
 import { safetlyCheckPreset } from './preset_utils'
 import { initButtonPreset, initButtonTheme, setThemeButtonName, toggleClickSound, toggleDropdown, togglePresetDropdown } from './button_utils'
@@ -16,6 +16,7 @@ export const buttonThemeContent = document.getElementById('themes-content') as H
 export const buttonClickSound = document.getElementById('button-click-sound') as HTMLElement
 export const buttonPreset = document.getElementById('button-preset') as HTMLElement
 export const buttonPresetContent = document.getElementById('presets-content') as HTMLElement
+export const buttonCenter = document.getElementById('button-center') as HTMLButtonElement
 
 // State
 
@@ -27,6 +28,7 @@ export let canvasY = 0
 export let clickSoundActive = true
 export let isDebug = false
 export const activeCards = new Set<Card>()
+export let inTransition = false
 
 // Init
 
@@ -133,6 +135,10 @@ export function setClickSound(val: boolean) {
   clickSoundActive = val
 }
 
+export function setTransition(val: boolean) {
+  inTransition = val
+}
+
 export function isInActiveCards(val: string): boolean {
   for (var card of activeCards) {
     if (card.id === val) return true;
@@ -158,3 +164,4 @@ export function playSound() {
 buttonTheme.addEventListener('click', toggleDropdown)
 buttonPreset.addEventListener('click', togglePresetDropdown)
 buttonClickSound.addEventListener('click', toggleClickSound)
+buttonCenter.addEventListener('click', centerCanvas)
