@@ -1,17 +1,16 @@
 /// <reference types="vite/client" />
 
-import { Card, SpawnedFrom } from './types'
+import { Card } from './types'
 import { extractFrontmatter, getCardType, parseMarkdown, removeFrontmatter, setExtraClasses } from './makdown_utils'
 import { addCanvasEventsListeners, addInternalLinkListeners, makeCardDraggable } from './event_listeners'
 import moment from 'moment'
 import { safetlyCheckPreset } from './preset_utils'
-import { initButtonPreset, initButtonTheme, setThemeButtonName, toggleClickSound, toggleDeleteMode, toggleDropdown, togglePresetDropdown } from './button_utils'
+import { initButtonPreset, initButtonTheme, setThemeButtonName, toggleClickSound, toggleDropdown, togglePresetDropdown } from './button_utils'
 
 // DOM
 
 export const canvas = document.getElementById('canvas') as HTMLElement
 export const canvasBackground = document.getElementById('canvas-background-effect') as HTMLElement
-export const buttonDelete = document.getElementById('button-delete-mode') as HTMLButtonElement
 export const buttonTheme = document.getElementById('button-themes') as HTMLButtonElement
 export const buttonThemeContent = document.getElementById('themes-content') as HTMLElement
 export const buttonClickSound = document.getElementById('button-click-sound') as HTMLElement
@@ -25,7 +24,6 @@ export let startX = 0
 export let startY = 0
 export let canvasX = 0
 export let canvasY = 0
-export let deleteMode = false
 export let clickSoundActive = true
 export let isDebug = false
 export const activeCards = new Set<Card>()
@@ -63,9 +61,8 @@ const availableCards = Object.keys(cardFiles).map(path => path.replace('/cards/'
  * @param left - horizontal position in px
  * @param top - vertical position in px
  * @param centerFix - the cards that are spawned by links doesn't need the center fix
- * @param protec - declaring if the card could be deleted by delete mode
  */
-export async function createCard(baseField: string, left: number, top: number, centerFix: boolean, protec: boolean): Promise<void> {
+export async function createCard(baseField: string, left: number, top: number, centerFix: boolean): Promise<void> {
   if (isInActiveCards(baseField)) return
 
   const matchedPath = availableCards.find(path => path === baseField || path.endsWith('/' + baseField));
@@ -105,7 +102,7 @@ export async function createCard(baseField: string, left: number, top: number, c
     div.appendChild(debugLabel)
   }
 
-  const cardF = new Card(baseField, left, top, text, frontmatter, div, protec)
+  const cardF = new Card(baseField, left, top, text, frontmatter, div)
   activeCards.add(cardF)
   canvas.appendChild(div)
   makeCardDraggable(cardF)
@@ -130,10 +127,6 @@ export function setStartY(y: number) {
 
 export function setPanning(val: boolean) {
   isPanning = val
-}
-
-export function setDeleteMode(val: boolean) {
-  deleteMode = val
 }
 
 export function setClickSound(val: boolean) {
@@ -162,7 +155,6 @@ export function playSound() {
   clickSound.play();
 }
 
-buttonDelete.addEventListener('click', toggleDeleteMode)
 buttonTheme.addEventListener('click', toggleDropdown)
 buttonPreset.addEventListener('click', togglePresetDropdown)
 buttonClickSound.addEventListener('click', toggleClickSound)

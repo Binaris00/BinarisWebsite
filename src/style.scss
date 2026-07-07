@@ -165,11 +165,6 @@ $colors: "blue", "red", "yellow", "green", "pink", "purple";
   }
 }
 
-.can-be-deleted:hover {
-  background-color: color-mix(in srgb, var(--red), var(--container-background) 20%) !important;
-  cursor: pointer;
-}
-
 // Index cards
 
 [data-color-theme='index-cards'] {
@@ -357,7 +352,7 @@ video {
 #presets-content {
   position: fixed;
   top: 95px;
-  left: 535px;
+  left: 360px;
   background: var(--container-background);
   border: 3px solid var(--container-border-color);
   display: none;
@@ -386,7 +381,7 @@ video {
 #themes-content {
   position: fixed;
   top: 95px;
-  left: 210px;
+  left: 20px;
   background: var(--container-background);
   border: 3px solid var(--container-border-color);
   display: none;

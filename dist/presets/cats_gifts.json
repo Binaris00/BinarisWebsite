@@ -3,74 +3,62 @@
         "presentation": {
             "coords": [0, 0],
             "center": true,
-            "random": false,
-            "protected": false
+            "random": false
         },
         "happy_cat_blue_driving_car": {
             "coords": [200, 500],
             "center": false,
-            "random": true,
-            "protected": false
+            "random": true
         },
         "bored_brown_fat_cat": {
             "coords": [500, 200],
             "center": false,
-            "random": true,
-            "protected": false
+            "random": true
         },
         "cat_meme": {
             "coords": [300, 300],
             "center": false,
-            "random": true,
-            "protected": false
+            "random": true
         },
         "cat_pet_pet_pet_pet_pet": {
             "coords": [1000, 500],
             "center": false,
-            "random": true,
-            "protected": false
+            "random": true
         },
         "cat_scuba_dance": {
             "coords": [700, 700],
             "center": false,
-            "random": true,
-            "protected": false
+            "random": true
         },
         "cat_side_eye": {
             "coords": [900, 900],
             "center": false,
-            "random": true,
-            "protected": false
+            "random": true
         },
         "gato_en_tocadiscos_spinning": {
             "coords": [800, 800],
             "center": false,
-            "random": true,
-            "protected": false
+            "random": true
         },
         "gato_encerrado_con_otro": {
             "coords": [1000, 1000],
             "center": false,
-            "random": true,
-            "protected": false
+            "random": true
         },
         "small_cat_hello_chat": {
             "coords": [1000, 1000],
             "center": false,
-            "random": true,
-            "protected": false
+            "random": true
         },
         "smart_cat_with_glasses_cam": {
             "coords": [1000, 1000],
             "center": false,
-            "random": true,
-            "protected": false
+            "random": true
         },
         "scuba_dance_cat": {
             "coords": [1000, 1000],
             "center": false,
-            "random": true,
-            "protected": false
+            "random": true
         }
     },
 

@@ -1,4 +1,4 @@
-import { canvas, canvasBackground, canvasX, canvasY, createCard, deleteMode, isPanning, playSound, setCanvasX, setCanvasY, setPanning, setStartX, setStartY, startX, startY } from './main';
+import { canvas, canvasBackground, canvasX, canvasY, createCard, isPanning, playSound, setCanvasX, setCanvasY, setPanning, setStartX, setStartY, startX, startY } from './main';
 import { removeCard } from './makdown_utils';
 import { Card } from './types';
 
@@ -20,7 +20,7 @@ export function addInternalLinkListeners(card: HTMLElement): void {
         const currentTop = parseInt(card.style.top || '0')
         const cardWidth = card.offsetWidth
         playSound()
-        createCard(pageName, currentLeft + cardWidth + 40, currentTop, false, false)
+        createCard(pageName, currentLeft + cardWidth + 40, currentTop, false)
     })
 } 
 
@@ -47,7 +47,6 @@ export function makeCardDraggable(card: Card): void {
 
   function onMove(e: MouseEvent | TouchEvent) {
     if (!isDragging) return
-    if (deleteMode && !card.protec) { card.div.remove(); return }
     e.preventDefault()
     const { x, y } = getClient(e)
     card.div.style.left = (x - cardStartX) + 'px'
@@ -58,7 +57,6 @@ export function makeCardDraggable(card: Card): void {
     if (!isDragging) return
     isDragging = false
     card.div.style.cursor = 'grab'
-    if (deleteMode && !card.protec) removeCard(card.div)
   }
 
   card.div.addEventListener('mousedown', onStart)

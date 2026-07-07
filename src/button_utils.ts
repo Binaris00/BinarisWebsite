@@ -1,20 +1,6 @@
-import { deleteMode, buttonDelete, setDeleteMode, buttonTheme, validThemes, buttonThemeContent, clickSoundActive, setClickSound, buttonClickSound, activeCards, buttonPresetContent, validPresets } from './main';
+import { buttonTheme, validThemes, buttonThemeContent, clickSoundActive, setClickSound, buttonClickSound, activeCards, buttonPresetContent, validPresets } from './main';
 import { removeCard } from './makdown_utils';
 import { loadPreset } from './preset_utils';
-
-
-export function toggleDeleteMode() {
-    setDeleteMode(!deleteMode)
-    buttonDelete.innerHTML = deleteMode ? 'Exit Delete Mode' : 'Enter Delete Mode'
-
-    activeCards.forEach(c => {
-     if (deleteMode && !c.protec) {
-      c.div.classList.add('can-be-deleted')
-    } else {
-      c.div.classList.remove('can-be-deleted');
-    }
-    })
-}
 
 // Theme Button
 

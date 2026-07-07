@@ -3,56 +3,47 @@
         "presentation": {
             "coords": [0, 0],
             "center": true,
-            "random": false,
-            "protected": false
+            "random": false
         },
         "discord_link": {
             "coords": [-575, -170],
             "center": false,
-            "random": false,
-            "protected": false
+            "random": false
         },
         "curseforge_link": {
             "coords": [-15, -295],
             "center": false,
-            "random": false,
-            "protected": false
+            "random": false
         },
         "electrodiscord_link": {
             "coords": [-275, -245],
             "center": false,
-            "random": false,
-            "protected": false
+            "random": false
         },
         "github_link": {
             "coords": [351, 64],
             "center": false,
-            "random": false,
-            "protected": false
+            "random": false
         },
         "kofi_link": {
             "coords": [45, 115],
             "center": false,
-            "random": false,
-            "protected": false
+            "random": false
         },
         "modrinth_link": {
             "coords": [266, -180],
             "center": false,
-            "random": false,
-            "protected": false
+            "random": false
         },
         "twitter_link": {
             "coords": [-600, 90],
             "center": false,
-            "random": false,
-            "protected": false
+            "random": false
         },
         "youtube_link": {
             "coords": [-300, 120],
             "center": false,
-            "random": false,
-            "protected": false
+            "random": false
         }
     },
     "theme": "neobrutalism"

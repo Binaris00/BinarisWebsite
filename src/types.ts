@@ -14,16 +14,14 @@ export class Card {
   content: string;
   frontmatter: Frontmatter;
   div: HTMLElement;
-  protec: boolean
 
-  constructor(id: string, left: number, top: number, content: string, frontmatter: Frontmatter, div: HTMLElement, protec: boolean) {
+  constructor(id: string, left: number, top: number, content: string, frontmatter: Frontmatter, div: HTMLElement) {
     this.id = id
     this.left = left
     this.top = top
     this.content = content
     this.frontmatter = frontmatter
     this.div = div
-    this.protec = protec
   }
 }
 
@@ -31,7 +29,6 @@ export interface CardEntry {
   coords: [number, number]
   center: boolean
   random: boolean
-  protected: boolean
 }
 
 export interface Preset {

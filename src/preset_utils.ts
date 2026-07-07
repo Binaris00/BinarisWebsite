@@ -18,16 +18,16 @@ export async function loadPreset(name: string): Promise<void> {
     const [x, y] = entry.coords
 
     if (entry.random) {
-        createCard(cardName, getRandomIntInclusive(-x, x), getRandomIntInclusive(-y, y), false, entry.protected)
+        createCard(cardName, getRandomIntInclusive(-x, x), getRandomIntInclusive(-y, y), false)
         continue
     }
 
     if (entry.center) {
-        createCard(cardName, centerX, centerY, false, entry.protected)
+        createCard(cardName, centerX, centerY, false)
         continue
     }
 
-    createCard(cardName, x, y, true, entry.protected)
+    createCard(cardName, x, y, true)
   }
 }
 
