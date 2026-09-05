@@ -8,7 +8,7 @@ Official repository to my personal canvas website.
 
 1. use `npm run build`, this will generate needed files in the dist/ folder
 2. move the cards folder to dist (this will be temporal)
-3. use `npm run preview` to check the created files (if this is well-made the push can be push the project)
+3. use `npm run preview` to check the created files
 4. push/copy the dist folder with its contents to neocities
 5. move the cards folder to its normal place
 

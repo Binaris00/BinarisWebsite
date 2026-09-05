@@ -121,6 +121,7 @@ export function addCanvasEventsListeners() {
 }
 
 export function centerCanvas() {
+  if (canvasX == 0 && canvasY == 0) return
   canvas.style.transition = 'transform 0.8s ease'
   canvasBackground.style.transition = 'background-position 0.8s ease'
 
