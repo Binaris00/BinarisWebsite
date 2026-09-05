@@ -1,0 +1,31 @@
+
+// Neobrutalism
+
+[data-color-theme='neobrutalism'] {
+  --canvas-background-0:    var(--neo-background);
+  --canvas-effect:          var(--neo-background-effect);
+  --container-background:   var(--neo-color-gray);
+  --container-border-color: var(--neo-color-black);
+  --text-color:             var(--neo-color-black);
+  --container-shadow:       var(--neo-card-shadow);
+
+  --pink:   var(--neo-color-pink);
+  --red:    var(--neo-color-red);
+  --yellow: var(--neo-color-orange); // TODO YELLOW
+  --green:  var(--neo-color-green);
+  --blue:   var(--neo-color-blue);
+  --purple: var(--neo-color-purple);
+  --gray:   var(--neo-color-gray);
+  --white:  var(--neo-color-white);
+  --black:  var(--neo-color-black);
+}
+
+$colors: "blue", "red", "yellow", "green", "pink", "purple";
+
+[data-color-theme='neobrutalism'] {
+  @each $color in $colors {
+    .card-color-#{$color} {
+      background-color: color-mix(in srgb, var(--#{$color}), var(--container-background) 60%);
+    }
+  }
+}

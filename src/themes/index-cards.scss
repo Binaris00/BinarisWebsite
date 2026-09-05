@@ -1,0 +1,45 @@
+
+// Index cards
+
+[data-color-theme='index-cards'] {
+  --canvas-background-0:    var(--neo-background);
+  --canvas-effect:          var(--neo-background-effect);
+  --container-background:   var(--neo-color-gray);
+  --container-border-color: var(--neo-color-black);
+  --text-color:             var(--neo-color-black);
+  --container-shadow:       var(--neo-card-shadow);
+
+  --pink:   var(--neo-color-pink);
+  --red:    var(--neo-color-red);
+  --yellow: var(--neo-color-orange); // TODO YELLOW
+  --green:  var(--neo-color-green);
+  --blue:   var(--neo-color-blue);
+  --purple: var(--neo-color-purple);
+  --gray:   var(--neo-color-gray);
+  --white:  var(--neo-color-white);
+  --black:  var(--neo-color-black);
+}
+
+[data-color-theme='index-cards'] #canvas-background-effect {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-image: radial-gradient(
+      circle at center,
+      black 0.1rem,
+      transparent 0
+    ), radial-gradient(circle at center, black 0.1rem, transparent 0);
+  background-size: 30px 30px;
+}
+
+
+
+.debug-label {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  font-size: 14px;
+  pointer-events: none;
+  color: var(--red);
+  background-color: var(--black);
+}

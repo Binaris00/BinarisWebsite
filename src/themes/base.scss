@@ -1,0 +1,328 @@
+@import url('https://cdn.jsdelivr.net/npm/@catppuccin/palette/css/catppuccin.css');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+:root {
+  --page-title-size: 45px;
+  --page-title-weight: 700;
+  --page-title-line-height: 1.2;
+  --page-title-letter-spacing: 0em;
+
+  --h1-size: 32px;
+  --h1-weight: 600;
+  --h1-line-height: 1.25;
+  --h1-letter-spacing: 0em;
+
+  --h2-size: 28px;
+  --h2-weight: 600;
+  --h2-line-height: 1.28;
+  --h2-letter-spacing: 0em;
+
+  --h3-size: 24px;
+  --h3-weight: 600;
+  --h3-line-height: 1.33;
+  --h3-letter-spacing: 0em;
+
+  --h4-size: 22px;
+  --h4-weight: 600;
+  --h4-line-height: 1.27;
+  --h4-letter-spacing: 0em;
+
+  --h5-size: 14px;
+  --h5-weight: 600;
+  --h5-line-height: normal;
+  --h5-letter-spacing: 0em;
+
+  --p-size: 16px;
+  --p-weight: 600;
+  --p-line-height: 1.5;
+  --p-letter-spacing: 0em;
+
+  // neobrutalism style (hardcodec colors)
+  --neo-color-white: #F7F7F7;
+  --neo-color-black: #222222;
+  --neo-color-gray: #EDEDED;
+  --neo-color-red: #FF6F61;
+  --neo-color-celeste: #61F1FF;
+  --neo-color-blue: #61A2FF;
+  --neo-color-orange: #FFBE61;
+  --neo-color-green: #61FF6F;
+  --neo-color-purple: #BE61FF;
+  --neo-color-pink: #FF61A2;
+
+  --neo-background: var(--neo-color-white);
+  --neo-background-effect: var(--neo-color-black);
+  --neo-card-background: var(--neo-color-gray);
+  --neo-card-shadow: #22222230;
+}
+
+
+// =======================================================================================
+// Cards
+// =======================================================================================
+
+%card-base {
+  border: 3px solid var(--container-border-color);
+  box-shadow: -8px 8px var(--container-shadow);
+  position: absolute;
+  cursor: grab;
+  user-select: none;
+  transition: background-color 0.3s;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.card {
+  @extend %card-base;
+  padding: 10px;
+  background-color: var(--container-background);
+  width: 600px;
+}
+
+.gif-card {
+  @extend %card-base;
+
+  // without this there's a tiny gap below the gif
+  p img {
+    display: block;
+  }
+}
+
+.card img {
+  max-width: 80%;
+  height: auto;
+  display: block;
+  margin: 10px auto;  
+  border: 2px solid var(--black); 
+}
+
+// =======================================================================================
+// General style
+// =======================================================================================
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow: hidden;
+  background: var(--canvas-background-0);
+}
+
+#canvas-background-effect {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  cursor: grab;
+  background:
+    linear-gradient(0deg, var(--canvas-effect) 1px, transparent 1px),
+    linear-gradient(90deg, var(--canvas-effect) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+#canvas {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+// =======================================================================================
+// Card typography
+// =======================================================================================
+
+@mixin card-text($size-var, $weight-var, $lh-var, $ls-var, $margin: '2px 0px 3px 0px') {
+  color: var(--text-color);
+  font-size: var(#{$size-var});
+  font-weight: var(#{$weight-var});
+  line-height: var(#{$lh-var});
+  letter-spacing: var(#{$ls-var});
+  margin: #{$margin};
+}
+
+.card {
+  h1 { @include card-text('--h1-size', '--h1-weight', '--h1-line-height', '--h1-letter-spacing'); }
+  h2 { @include card-text('--h2-size', '--h2-weight', '--h2-line-height', '--h2-letter-spacing'); }
+  h3 { @include card-text('--h3-size', '--h3-weight', '--h3-line-height', '--h3-letter-spacing'); }
+  h4 { @include card-text('--h4-size', '--h4-weight', '--h4-line-height', '--h4-letter-spacing'); }
+  h5 { @include card-text('--h5-size', '--h5-weight', '--h5-line-height', '--h5-letter-spacing'); }
+  h6 { @include card-text('--h6-size', '--h6-weight', '--h6-line-height', '--h6-letter-spacing'); }
+
+  p {
+    @include card-text('--p-size', '--p-weight', '--p-line-height', '--p-letter-spacing', '15px 0px 15px 0px');
+    overflow-wrap: break-word;
+  }
+
+  ul,
+  ol {
+    @include card-text('--p-size', '--p-weight', '--p-line-height', '--p-letter-spacing', '8px 0px 8px 0px');
+    list-style-position: inside;
+  }
+
+a:link {
+  color: var(--text-color);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--container-border-color);
+  cursor: pointer;
+  transition: border-color 0.15s, opacity 0.15s;
+
+  &:hover {
+    border-bottom-color: var(--text-color);
+    opacity: 0.75;
+  }
+}
+
+a:visited {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--text-color);
+}
+
+a:active {
+  text-decoration: underline;
+  color: var(--text-color);
+}
+
+  table {
+    table-layout: auto;
+    border-collapse: collapse;
+    border: 1px solid var(--text-color);
+  }
+
+  th,
+  td {
+    padding: 0.6em;
+  }
+
+  tr {
+    border: 2px solid var(--text-color);
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: color-mix(in srgb, var(--blue) 3%, transparent);
+  }
+
+  a.internal-link {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--container-border-color);
+    cursor: pointer;
+    transition: border-color 0.15s, opacity 0.15s;
+
+    &:hover {
+      border-bottom-color: var(--text-color);
+      opacity: 0.75;
+    }
+  }
+}
+
+.h1-display-lg h1 {
+  @include card-text('--page-title-size', '--page-title-weight', '--page-title-line-height', '--page-title-letter-spacing');
+  text-align: center;
+}
+
+
+
+img,
+video {
+  pointer-events: none;
+}
+
+
+// =======================================================================================
+// Toolbar
+// =======================================================================================
+
+.toolbar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: var(--container-background);
+  padding: 10px;
+  border: 3px solid var(--container-border-color);
+  display: flex;
+  gap: 8px;
+  z-index: 1000;
+
+  button {
+    color: var(--text-color);
+    font-size: var(--p-size);
+    font-weight: var(--p-weight);
+    line-height: var(--p-line-height);
+    letter-spacing: var(--p-letter-spacing);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: color-mix(in srgb, var(--text-color), var(--container-background) 90%);
+    }
+  }
+}
+
+#presets-content {
+  position: fixed;
+  top: 95px;
+  left: 450px;
+  background: var(--container-background);
+  border: 3px solid var(--container-border-color);
+  display: none;
+  gap: 8px;
+  z-index: 1000;
+  overflow: auto;
+  flex-direction: column;
+}
+
+.preset-content-anchor {  
+  color: var(--text-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-preset {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-preset a:hover {
+  background-color: color-mix(in srgb, var(--text-color), var(--container-background) 90%);
+}
+
+#themes-content {
+  position: fixed;
+  top: 95px;
+  left: 20px;
+  background: var(--container-background);
+  border: 3px solid var(--container-border-color);
+  display: none;
+  gap: 8px;
+  z-index: 1000;
+  overflow: auto;
+  flex-direction: column;
+}
+
+.theme-content-anchor {  
+  color: var(--text-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown a:hover {
+  background-color: color-mix(in srgb, var(--text-color), var(--container-background) 90%);
+}
