@@ -1,0 +1,48 @@
+{
+  "cards": {
+    "presentation": {
+      "mode": "center"
+    },
+    "discord_link": {
+      "mode": "offset",
+      "x": -575,
+      "y": -170
+    },
+    "curseforge_link": {
+      "mode": "offset",
+      "x": -15,
+      "y": -295
+    },
+    "electrodiscord_link": {
+      "mode": "offset",
+      "x": -275,
+      "y": -245
+    },
+    "github_link": {
+      "mode": "offset",
+      "x": 351,
+      "y": 64
+    },
+    "kofi_link": {
+      "mode": "offset",
+      "x": 45,
+      "y": 115
+    },
+    "modrinth_link": {
+      "mode": "offset",
+      "x": 266,
+      "y": -180
+    },
+    "twitter_link": {
+      "mode": "offset",
+      "x": -600,
+      "y": 90
+    },
+    "youtube_link": {
+      "mode": "offset",
+      "x": -300,
+      "y": 120
+    }
+  },
+  "theme": "neobrutalism"
+}

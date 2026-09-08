@@ -31,15 +31,3 @@
     ), radial-gradient(circle at center, black 0.1rem, transparent 0);
   background-size: 30px 30px;
 }
-
-
-
-.debug-label {
-  position: absolute;
-  top: -20px;
-  left: 0;
-  font-size: 14px;
-  pointer-events: none;
-  color: var(--red);
-  background-color: var(--black);
-}

@@ -1,0 +1,38 @@
+{
+  "cards": {
+    "presentation": {
+      "mode": "center"
+    },
+    "work_presentation": {
+      "mode": "offset",
+      "x": 71,
+      "y": 102
+    },
+    "instructions": {
+      "mode": "offset",
+      "x": -700,
+      "y": 71
+    },
+    "work_external": {
+      "mode": "offset",
+      "x": 483,
+      "y": -61
+    },
+    "commission_board": {
+      "mode": "offset",
+      "x": -793,
+      "y": -621
+    },
+    "commission_tags_board": {
+      "mode": "offset",
+      "x": 123,
+      "y": -331
+    },
+    "personal_projects": {
+      "mode": "offset",
+      "x": -1203,
+      "y": -121
+    }
+  },
+  "theme": "neobrutalism"
+}

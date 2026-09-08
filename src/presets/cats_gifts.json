@@ -1,0 +1,63 @@
+{
+  "cards": {
+    "presentation": {
+      "mode": "center"
+    },
+    "happy_cat_blue_driving_car": {
+      "mode": "random",
+      "x": 200,
+      "y": 500
+    },
+    "bored_brown_fat_cat": {
+      "mode": "random",
+      "x": 500,
+      "y": 200
+    },
+    "cat_meme": {
+      "mode": "random",
+      "x": 300,
+      "y": 300
+    },
+    "cat_pet_pet_pet_pet_pet": {
+      "mode": "random",
+      "x": 1000,
+      "y": 500
+    },
+    "cat_scuba_dance": {
+      "mode": "random",
+      "x": 700,
+      "y": 700
+    },
+    "cat_side_eye": {
+      "mode": "random",
+      "x": 900,
+      "y": 900
+    },
+    "gato_en_tocadiscos_spinning": {
+      "mode": "random",
+      "x": 800,
+      "y": 800
+    },
+    "gato_encerrado_con_otro": {
+      "mode": "random",
+      "x": 1000,
+      "y": 1000
+    },
+    "small_cat_hello_chat": {
+      "mode": "random",
+      "x": 1000,
+      "y": 1000
+    },
+    "smart_cat_with_glasses_cam": {
+      "mode": "random",
+      "x": 1000,
+      "y": 1000
+    },
+    "scuba_dance_cat": {
+      "mode": "random",
+      "x": 1000,
+      "y": 1000
+    }
+  },
+  "theme": "index-cards"
+}

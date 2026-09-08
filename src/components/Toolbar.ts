@@ -1,88 +1,89 @@
-import { removeCard } from '../core/canvas';
-import { loadPreset } from '../core/loader';
-import { buttonThemeContent, buttonPresetContent, buttonClickSound, buttonTheme } from '../main';
-import { validThemes, validPresets, clickSoundActive, setClickSound, activeCards } from '../state';
+/// <reference types="vite/client" />
 
+import { buttonClickSound, buttonPresetContent, buttonTheme, buttonThemeContent } from '../dom'
+import { activeCards, clickSoundActive, setClickSound } from '../state'
+import { removeCard } from './Cards'
+import { loadPreset, presetNames } from '../core/loader'
 
-// Theme Button
+// Handle the Toolbar elements outside of its type, changing state features and init internal parts for all buttons
 
-export function initButtonTheme() {
-    validThemes.forEach((label, key) => {
+const themeModules = import.meta.glob('/src/themes/*.scss')
 
-        const anchor = document.createElement('a');
+const themeKeys: string[] = Object.keys(themeModules)
+    .map((path) =>
+        path
+            .split('/')
+            .pop()!
+            .replace(/\.scss$/, ''),
+    )
+    .filter((key) => key !== 'base')
 
-        anchor.href = `#${key}`;
-        anchor.textContent = label;
-        anchor.className = 'theme-content-anchor';
+function themeLabel(key: string): string {
+    return key
+        .split('-')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')
+}
+
+export function initButtonTheme(): void {
+    for (const key of themeKeys) {
+        const anchor = document.createElement('a')
+
+        anchor.href = `#${key}`
+        anchor.textContent = themeLabel(key)
+        anchor.className = 'theme-content-anchor'
 
         anchor.addEventListener('click', (e) => {
-            e.preventDefault();
-            setThemeButtonName(label);
-            document.documentElement.setAttribute('data-color-theme', key);
-            toggleDropdown();
-        });
+            e.preventDefault()
+            setThemeButtonName(key)
+            document.documentElement.setAttribute('data-color-theme', key)
+            toggleDropdown()
+        })
 
-        buttonThemeContent.appendChild(anchor);
-    });
-} export function initButtonPreset() {
-    validPresets.forEach((label, key) => {
-        const anchor = document.createElement('a');
+        buttonThemeContent.appendChild(anchor)
+    }
+}
 
-        anchor.href = `#${key}`;
-        anchor.textContent = label;
-        anchor.className = 'preset-content-anchor';
+export function initButtonPreset(): void {
+    for (const name of presetNames) {
+        const anchor = document.createElement('a')
+
+        anchor.href = `#${name}`
+        anchor.textContent = name
+        anchor.className = 'preset-content-anchor'
 
         anchor.addEventListener('click', (e) => {
-            e.preventDefault();
-            checkPreset(key);
-            togglePresetDropdown();
-        });
+            e.preventDefault()
+            checkPreset(name)
+            togglePresetDropdown()
+        })
 
-        buttonPresetContent.appendChild(anchor);
-    });
-}
-export function toggleDropdown() {
-    if (buttonThemeContent.style.display === 'flex') {
-        buttonThemeContent.style.display = 'none';
-    } else {
-        buttonThemeContent.style.display = 'flex';
-    }
-}
-export function togglePresetDropdown() {
-    if (buttonPresetContent.style.display === 'flex') {
-        buttonPresetContent.style.display = 'none';
-    } else {
-        buttonPresetContent.style.display = 'flex';
-    }
-}
-export function toggleClickSound() {
-    if (clickSoundActive) {
-        buttonClickSound.innerHTML = "Turn on click sound";
-    } else {
-        buttonClickSound.innerHTML = "Turn off click sound";
-    }
-
-    setClickSound(!clickSoundActive);
-}
-export function setThemeButtonName(val: string | null) {
-    if (val === null) {
-        buttonTheme.innerHTML = "This isn't working...?";
-        return;
-    }
-
-    if (isValidKey(val)) {
-        const result = validThemes.get(val);
-        buttonTheme.innerHTML = result;
+        buttonPresetContent.appendChild(anchor)
     }
 }
 
-export function isValidKey(key: string): boolean {
-    return validThemes.has(key);
+export function toggleDropdown(): void {
+    buttonThemeContent.style.display = buttonThemeContent.style.display === 'flex' ? 'none' : 'flex'
 }
-export function checkPreset(preset: string) {
-    activeCards.forEach((c) => {
-        removeCard(c.div);
-    });
 
-    loadPreset(preset);
+export function togglePresetDropdown(): void {
+    buttonPresetContent.style.display = buttonPresetContent.style.display === 'flex' ? 'none' : 'flex'
+}
+
+export function toggleClickSound(): void {
+    buttonClickSound.innerHTML = clickSoundActive ? 'Turn on click sound' : 'Turn off click sound'
+    setClickSound(!clickSoundActive)
+}
+
+export function setThemeButtonName(key: string | null): void {
+    if (key === null || !themeKeys.includes(key)) {
+        buttonTheme.innerHTML = "This isn't working...?"
+        return
+    }
+    buttonTheme.innerHTML = themeLabel(key)
+}
+
+export function checkPreset(preset: string): void {
+    activeCards.forEach((card) => removeCard(card))
+    loadPreset(preset)
 }

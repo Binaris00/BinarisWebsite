@@ -1,0 +1,33 @@
+{
+  "cards": {
+    "instructions": {
+      "mode": "offset",
+      "x": 100,
+      "y": 120
+    },
+    "presentation": {
+      "mode": "center"
+    },
+    "start": {
+      "mode": "offset",
+      "x": 31,
+      "y": 53
+    },
+    "my_series": {
+      "mode": "offset",
+      "x": -703,
+      "y": -321
+    },
+    "my_games": {
+      "mode": "offset",
+      "x": 123,
+      "y": -331
+    },
+    "social_media": {
+      "mode": "offset",
+      "x": -683,
+      "y": 51
+    }
+  },
+  "theme": "neobrutalism"
+}

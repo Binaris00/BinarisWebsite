@@ -1,59 +1,65 @@
 import { Card } from './types'
+import { canvas } from './dom'
 
-export const canvas = document.getElementById('canvas') as HTMLElement
-export const canvasBackground = document.getElementById('canvas-background-effect') as HTMLElement
+export const activeCards = new Map<string, Card>()
 
-export let isPanning = false
-export let startX = 0
-export let startY = 0
-export let canvasX = 0
-export let canvasY = 0
+export const centerX = Math.round(
+  canvas.getBoundingClientRect().left + document.documentElement.scrollLeft + canvas.clientWidth / 2,
+)
+export const centerY = Math.round(
+  canvas.getBoundingClientRect().top + document.documentElement.scrollTop + canvas.clientHeight / 2,
+)
 
-export function setPanning(val: boolean) {
-  isPanning = val
-}
+export let isInTransition = false
 
-export function setStartX(x: number) {
-  startX = x
-}
-
-export function setStartY(y: number) {
-  startY = y
-}
-
-export function setCanvasX(x: number) {
-  canvasX = x
-}
-
-export function setCanvasY(y: number) {
-  canvasY = y
-}
-
-export let deleteMode = false
-
-export function setDeleteMode(val: boolean) {
-  deleteMode = val
+export function setTransition(val: boolean): void {
+  isInTransition = val
 }
 
 export let clickSoundActive = true
 
-export function setClickSound(val: boolean) {
+export function setClickSound(val: boolean): void {
   clickSoundActive = val
 }
 
-export const activeCards = new Set<Card>()
+export let isPanning = false
+export let panStartX = 0
+export let panStartY = 0
+export let canvasX = 0
+export let canvasY = 0
 
-export const centerX = Math.round(canvas.getBoundingClientRect().left + document.documentElement.scrollLeft + canvas.clientWidth / 2)
-export const centerY = Math.round(canvas.getBoundingClientRect().top + document.documentElement.scrollTop + canvas.clientHeight / 2)
+export function setPanning(val: boolean): void {
+  isPanning = val
+}
 
-export const validThemes = new Map<string, string>([
-  ["neobrutalism", "Neobrutalism"],
-  ["index-cards", "Index Cards"]
-])
+export function setPanStartX(x: number): void {
+  panStartX = x
+}
 
-export const validPresets = new Map<string, string>([
-  ["main", "main"],
-  ["work", "work"],
-  ["cats_gifts", "cats_gifts"],
-  ["links", "links"]
-])
+export function setPanStartY(y: number): void {
+  panStartY = y
+}
+
+export function setCanvasX(x: number): void {
+  canvasX = x
+}
+
+export function setCanvasY(y: number): void {
+  canvasY = y
+}
+
+export let draggingCard: Card | null = null
+export let dragOffsetX = 0
+export let dragOffsetY = 0
+
+export function setDraggingCard(card: Card | null): void {
+  draggingCard = card
+}
+
+export function setDragOffsetX(x: number): void {
+  dragOffsetX = x
+}
+
+export function setDragOffsetY(y: number): void {
+  dragOffsetY = y
+}
