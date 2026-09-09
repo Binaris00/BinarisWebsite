@@ -7,7 +7,7 @@
 
 import { playSound } from '../audio'
 import { canvas, canvasBackground } from '../dom'
-import { activeCards, centerX, centerY } from '../state'
+import { activeCards, centerX, centerY, isDebug } from '../state'
 import { Card } from '../types'
 import type { CardEntry, CardPosition } from '../types'
 import { goToCard } from './Canvas'
@@ -54,6 +54,14 @@ export function createCard(name: string, position: CardPosition): Card | null {
   activeCards.set(name, card)
   canvas.appendChild(div)
   card.render()
+
+  if (isDebug) {
+    const debugLabel = document.createElement('div')
+    debugLabel.className = 'debug-label'
+    debugLabel.textContent = `${card.x}, ${card.y}`
+    div.appendChild(debugLabel)
+  }
+
   return card
 }
 

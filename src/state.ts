@@ -26,6 +26,8 @@ export function setClickSound(val: boolean): void {
   clickSoundActive = val
 }
 
+export const isDebug = true
+
 export let isPanning = false
 export let panStartX = 0
 export let panStartY = 0

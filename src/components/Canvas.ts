@@ -60,6 +60,11 @@ function onPointerDown(e: MouseEvent | TouchEvent): void {
     canvasBackground.style.cursor = 'grabbing'
 }
 
+function updateDebugLabel(card: Card): void {
+    const label = card.div.querySelector('.debug-label')
+    if (label) label.textContent = `${card.x}, ${card.y}`
+}
+
 function onPointerMove(e: MouseEvent | TouchEvent): void {
     if (isInTransition) return
 
@@ -68,6 +73,7 @@ function onPointerMove(e: MouseEvent | TouchEvent): void {
     if (draggingCard) {
         e.preventDefault()
         draggingCard.setPosition(x - dragOffsetX, y - dragOffsetY)
+        updateDebugLabel(draggingCard)
         return
     }
 

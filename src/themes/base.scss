@@ -326,3 +326,13 @@ video {
 .dropdown a:hover {
   background-color: color-mix(in srgb, var(--text-color), var(--container-background) 90%);
 }
+
+.debug-label {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  font-size: 14px;
+  pointer-events: none;
+  color: var(--red);
+  background-color: var(--black);
+}

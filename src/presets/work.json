@@ -1,37 +1,113 @@
+
 {
   "cards": {
     "presentation": {
       "mode": "center"
     },
-    "work_presentation": {
+    "Cobblemon Mods": {
       "mode": "offset",
-      "x": 71,
-      "y": 102
+      "x": -950,
+      "y": 1775
     },
-    "instructions": {
+    "Commissions Board": {
       "mode": "offset",
-      "x": -700,
-      "y": 71
+      "x": 1050,
+      "y": 160
     },
-    "work_external": {
+    "Commissions Tags Board": {
       "mode": "offset",
-      "x": 483,
-      "y": -61
+      "x": 390,
+      "y": 515
     },
-    "commission_board": {
+    "Fabric Mods": {
       "mode": "offset",
-      "x": -793,
-      "y": -621
+      "x": -1705,
+      "y": -1215
     },
-    "commission_tags_board": {
+    "Forge Mods": {
       "mode": "offset",
-      "x": 123,
-      "y": -331
+      "x": 1830,
+      "y": 1400
     },
-    "personal_projects": {
+    "cobblemon_legendary_spawn": {
       "mode": "offset",
-      "x": -1203,
-      "y": -121
+      "x": -882,
+      "y": 2200
+    },
+    "cobblemon_raids": {
+      "mode": "offset",
+      "x": -1650,
+      "y": 1450
+    },
+    "multirandomizer": {
+      "mode": "offset",
+      "x": -190,
+      "y": 1915
+    },
+    "odyssey_pokedrop": {
+      "mode": "offset",
+      "x": -265,
+      "y": 1650
+    },
+    "sad_ditto": {
+      "mode": "offset",
+      "x": -950,
+      "y": 1475
+    },
+    "shiny_converter": {
+      "mode": "offset",
+      "x": -1615,
+      "y": 2085
+    },
+    "biome_loot_table": {
+      "mode": "offset",
+      "x": -765,
+      "y": -1015
+    },
+    "exploration_revamped": {
+      "mode": "offset",
+      "x": -1405,
+      "y": -680
+    },
+    "herobrines_like": {
+      "mode": "offset",
+      "x": -2065,
+      "y": -580
+    },
+    "hour_limit": {
+      "mode": "offset",
+      "x": -970,
+      "y": -1275
+    },
+    "illegal_mobs": {
+      "mode": "offset",
+      "x": -2520,
+      "y": -1270
+    },
+    "kit_custom_enchants": {
+      "mode": "offset",
+      "x": -2402,
+      "y": -1755
+    },
+    "mobility_changer": {
+      "mode": "offset",
+      "x": -1685,
+      "y": -1915
+    },
+    "multihitbox_lib": {
+      "mode": "offset",
+      "x": -1000,
+      "y": -1680
+    },
+    "extracmds": {
+      "mode": "offset",
+      "x": 2570,
+      "y": 1515
+    },
+    "tetra_more_weapons": {
+      "mode": "offset",
+      "x": 1850,
+      "y": 1635
     }
   },
   "theme": "neobrutalism"
