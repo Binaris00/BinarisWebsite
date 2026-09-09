@@ -1,5 +1,9 @@
-export type Frontmatter = Record<string, string>
+// =========================================================================================
+// 
+// =========================================================================================
 
+
+export type Frontmatter = Record<string, string>
 export type Anchor = 'top-left' | 'center'
 
 export interface CardPosition {
@@ -19,28 +23,6 @@ export interface CardEntry {
 export interface Preset {
   cards: Record<string, CardEntry>
   theme: string
-}
-
-export function resolveCardEntry(entry: CardEntry, center: { x: number; y: number }): CardPosition {
-  switch (entry.mode) {
-    case 'center':
-      return { x: center.x, y: center.y, anchor: 'center' }
-    case 'offset':
-      return { x: center.x + (entry.x ?? 0), y: center.y + (entry.y ?? 0) }
-    case 'absolute':
-      return { x: entry.x ?? 0, y: entry.y ?? 0 }
-    case 'random':
-      return {
-        x: getRandomIntInclusive(-(entry.x ?? 0), entry.x ?? 0),
-        y: getRandomIntInclusive(-(entry.y ?? 0), entry.y ?? 0),
-      }
-  }
-}
-
-export function getRandomIntInclusive(min: number, max: number): number {
-  const minCeiled = Math.ceil(min)
-  const maxFloored = Math.floor(max)
-  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled)
 }
 
 export class Card {

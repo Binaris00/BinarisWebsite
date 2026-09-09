@@ -1,3 +1,11 @@
+// =========================================================================================
+// General logic that interacts and modify the Canvas type as a whole, for example, changing its location, 
+// being a lot of "outside" events that do this we have this component for handling it
+//
+// This is done outside the effect because of that, these aren't 'common' use methods inside the types
+// they modify the same
+// =========================================================================================
+
 import { canvas, canvasBackground } from '../dom'
 import {
     activeCards,
@@ -21,9 +29,6 @@ import {
     setTransition,
 } from '../state'
 import type { Card } from '../types'
-
-// General logic that interacts and modify the Canvas type as a whole, for example, changing its location, 
-// being a lot of "outside" events that do this we have this component for handling it
 
 function getClient(e: MouseEvent | TouchEvent): { x: number; y: number } {
     return e instanceof TouchEvent ? { x: e.touches[0].clientX, y: e.touches[0].clientY } : { x: e.clientX, y: e.clientY }

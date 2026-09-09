@@ -1,4 +1,6 @@
+// =========================================================================================
 // All the dom elements, normally called by components and core
+// =========================================================================================
 
 export const canvas = document.getElementById('canvas') as HTMLElement
 export const canvasBackground = document.getElementById('canvas-background-effect') as HTMLElement

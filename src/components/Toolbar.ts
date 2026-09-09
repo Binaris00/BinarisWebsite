@@ -1,11 +1,15 @@
 /// <reference types="vite/client" />
 
+// =========================================================================================
+// Handle the Toolbar elements outside of its type, changing state features and init internal parts for all 
+// buttons, quite simple, most buttons need a init method to modify its text/display, so that goes here
+// too
+// =========================================================================================
+
 import { buttonClickSound, buttonPresetContent, buttonTheme, buttonThemeContent } from '../dom'
 import { activeCards, clickSoundActive, setClickSound } from '../state'
 import { removeCard } from './Cards'
 import { loadPreset, presetNames } from '../core/loader'
-
-// Handle the Toolbar elements outside of its type, changing state features and init internal parts for all buttons
 
 const themeModules = import.meta.glob('/src/themes/*.scss')
 

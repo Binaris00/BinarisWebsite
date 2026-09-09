@@ -1,10 +1,12 @@
-# Binaris Website
+# Binaris Portfolio Website
 
-Official repository to my personal canvas website.
+Official repository for my personal website. I wanted to make something unique, and I always liked the 'canvas' idea for something like this, so I made this.
+
+There isn't too much documentation for this because I don't like web development, because of this I made small comments in some parts of the project, they could be a little dumb.
 
 ## How to build and preview the site
 
-*I write this because I'm sure I will forget how to do it*
+*I write this because I'm sure I will forget how to do it :p*
 
 1. use `npm run build`, this will generate everything needed in the dist/ folder (including the cards/assets copied automatically, excluding `.obsidian`)
 2. use `npm run preview` to check the created files
@@ -14,20 +16,15 @@ Official repository to my personal canvas website.
 
 ## Useful commands
 
-- `npm run dev` — dev server
-- `npm run build` — production build into dist/
-- `npm run preview` — serve the built dist/
-- `npm run test` — run vitest unit tests
-- `npm run typecheck` — TypeScript check (no emit)
-- `npm run lint` — ESLint
-- `npm run format` — Prettier
+- `npm run dev`: dev server
+- `npm run build`: production build into dist/
+- `npm run preview`: serve the built dist/ for testing
 
 ## Content
 
-- `cards/` — Obsidian vault with the markdown cards (images live in `cards/assets/imgs/`). They are bundled into the build, so after editing run `npm run build` again.
-- `src/presets/*.json` — preset layouts. Each entry has a `mode`:
-  - `center` — placed at the center of the viewport
-  - `offset` — `x`/`y` are offsets from the center of the viewport
-  - `absolute` — `x`/`y` are raw coordinates
-  - `random` — placed at a random position within `[-x..x, -y..y]`
-- `src/themes/` — theme stylesheets. Each file (except `base.scss`) becomes an available theme by its filename.
+- Obsidian vault with the markdown/assets content, this is located inside `cards/`
+- Presets, each one can have a different set of cards with a location, located inside `src/presets/`. You can set different values to have more freedom in this aspect:
+  - You define that a card can be centered with `center`
+  - `offset` define the position based by the center of the page (this is responsive(?))
+  - Cards can get placed randomly with `random` and `[-x..x, -y..y]`
+  - Different themes with colors/card style/background

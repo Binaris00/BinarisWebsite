@@ -1,11 +1,13 @@
 /// <reference types="vite/client" />
 
+// =========================================================================================
+// Loads presets and themes from the repository, adding safety checks and loading content
+// =========================================================================================
+
 import { centerX, centerY } from '../state'
-import { resolveCardEntry } from '../types'
+import { resolveCardEntry } from "../components/Cards"
 import type { Preset } from '../types'
 import { createCard } from '../components/Cards'
-
-// loads presets and themes from the repo
 
 const presetModules = import.meta.glob('/src/presets/*.json', { eager: true, import: 'default' }) as Record<
     string,

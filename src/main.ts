@@ -11,7 +11,7 @@ import {
 import { centerCanvas, initDragController } from './components/Canvas'
 import { initInternalLinkListeners } from './components/Cards'
 import { buttonCenter, buttonClickSound, buttonPreset, buttonTheme } from './dom'
-import { initRouter } from './router'
+import { safelyCheckPreset } from './core/loader'
 
 initRouter()
 
@@ -29,3 +29,7 @@ buttonTheme.addEventListener('click', toggleDropdown)
 buttonPreset.addEventListener('click', togglePresetDropdown)
 buttonClickSound.addEventListener('click', toggleClickSound)
 buttonCenter.addEventListener('click', centerCanvas)
+export function initRouter(): void {
+  const preset = window.location.hash.substring(1)
+  safelyCheckPreset(preset)
+}

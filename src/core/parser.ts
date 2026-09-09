@@ -1,8 +1,11 @@
+// =========================================================================================
+// Gets raw data (like note content from Obsidian) and convert its to a format that the page can load, 
+// handles bad formatting and other unexpected cases
+// =========================================================================================
+
 import { marked, Renderer } from 'marked'
 import type { Tokens } from 'marked'
 import type { Frontmatter } from '../types'
-
-// Gets raw data (like note content from Obsidian) and convert its to a format that the page can load, handles bad formatting and other unexpected cases
 
 const ESCAPES: Record<string, string> = {
   '&': '&amp;',

@@ -1,14 +1,17 @@
 /// <reference types="vite/client" />
 
+// =========================================================================================
+// These are the methods that interacts with cards as a content, creating them, checking the active 
+// cards, looking at the frontmatter and some small changes
+// =========================================================================================
+
 import { playSound } from '../audio'
 import { canvas, canvasBackground } from '../dom'
 import { activeCards, centerX, centerY } from '../state'
 import { Card } from '../types'
-import type { CardPosition } from '../types'
+import type { CardEntry, CardPosition } from '../types'
 import { goToCard } from './Canvas'
 import { extractFrontmatter, getCardType, parseMarkdown, removeFrontmatter, setExtraClasses } from '../core/parser'
-
-// These are the methods that interacts with cards as a content, creating, adding events and more
 
 const cardModules = import.meta.glob(['/cards/**/*.md', '!/cards/.trash/**'], {
   eager: true,
@@ -93,4 +96,26 @@ export function initInternalLinkListeners(): void {
     playSound()
     createCard(pageName, { x, y })
   })
+} 
+
+export function resolveCardEntry(entry: CardEntry, center: { x: number; y: number }): CardPosition {
+  switch (entry.mode) {
+    case 'center':
+      return { x: center.x, y: center.y, anchor: 'center' }
+    case 'offset':
+      return { x: center.x + (entry.x ?? 0), y: center.y + (entry.y ?? 0) }
+    case 'absolute':
+      return { x: entry.x ?? 0, y: entry.y ?? 0 }
+    case 'random':
+      return {
+        x: getRandomIntInclusive(-(entry.x ?? 0), entry.x ?? 0),
+        y: getRandomIntInclusive(-(entry.y ?? 0), entry.y ?? 0),
+      }
+  }
+}
+
+export function getRandomIntInclusive(min: number, max: number): number {
+  const minCeiled = Math.ceil(min)
+  const maxFloored = Math.floor(max)
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled)
 }
