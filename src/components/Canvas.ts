@@ -30,6 +30,13 @@ import {
 } from '../state'
 import type { Card } from '../types'
 
+const BACKGROUND_PARALLAX = 0.5
+
+function applyCanvasTransform(x: number, y: number): void {
+    canvas.style.transform = `translate(${x}px, ${y}px)`
+    canvasBackground.style.backgroundPosition = `${x * BACKGROUND_PARALLAX}px ${y * BACKGROUND_PARALLAX}px`
+}
+
 function getClient(e: MouseEvent | TouchEvent): { x: number; y: number } {
     return e instanceof TouchEvent ? { x: e.touches[0].clientX, y: e.touches[0].clientY } : { x: e.clientX, y: e.clientY }
 }
@@ -114,8 +121,7 @@ export function centerCanvas(): void {
 
     setCanvasX(0)
     setCanvasY(0)
-    canvas.style.transform = 'translate(0px, 0px)'
-    canvasBackground.style.backgroundPosition = '0px 0px'
+    applyCanvasTransform(0, 0)
     setTransition(true)
 
     const cleanup = () => {

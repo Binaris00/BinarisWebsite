@@ -10,8 +10,10 @@ import {
 } from './components/Toolbar'
 import { centerCanvas, initDragController } from './components/Canvas'
 import { initInternalLinkListeners } from './components/Cards'
-import { buttonCenter, buttonClickSound, buttonPreset, buttonTheme } from './dom'
+import { buttonCenter, buttonClickSound, buttonPreset, buttonTheme, canvasBackground } from './dom'
 import { safelyCheckPreset } from './core/loader'
+
+canvasBackground.style.backgroundPosition = '0px 0px'
 
 initRouter()
 
