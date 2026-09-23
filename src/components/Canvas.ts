@@ -9,6 +9,8 @@
 import { canvas, canvasBackground } from '../dom'
 import {
     activeCards,
+    centerX,
+    centerY,
     canvasX,
     canvasY,
     dragOffsetX,
@@ -69,7 +71,7 @@ function onPointerDown(e: MouseEvent | TouchEvent): void {
 
 function updateDebugLabel(card: Card): void {
     const label = card.div.querySelector('.debug-label')
-    if (label) label.textContent = `${card.x}, ${card.y}`
+    if (label) label.textContent = `${card.x - centerX}, ${card.y - centerY}`
 }
 
 function onPointerMove(e: MouseEvent | TouchEvent): void {

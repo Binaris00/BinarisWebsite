@@ -58,7 +58,7 @@ export function createCard(name: string, position: CardPosition): Card | null {
   if (isDebug) {
     const debugLabel = document.createElement('div')
     debugLabel.className = 'debug-label'
-    debugLabel.textContent = `${card.x}, ${card.y}`
+    debugLabel.textContent = `${card.x - centerX}, ${card.y - centerY}`
     div.appendChild(debugLabel)
   }
 
